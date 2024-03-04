@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.47bf0f6f.css",
-    "main.js": "/static/js/main.0ab64775.js",
-    "static/media/logo-svg.svg": "/static/media/logo-svg.2a12da75338207c772978e6e88f70385.svg",
-    "static/media/empty-cart.png": "/static/media/empty-cart.db905d1f4b063162f25b.png",
-    "index.html": "/index.html",
-    "static/media/close.svg": "/static/media/close.3721b02ec61c1015e90388746e266d15.svg",
-    "static/media/arrow.svg": "/static/media/arrow.4e4ff56d18ba54fd1c40ab686efa9823.svg",
-    "main.47bf0f6f.css.map": "/static/css/main.47bf0f6f.css.map",
-    "main.0ab64775.js.map": "/static/js/main.0ab64775.js.map"
+    "main.css": "/my-pizza/static/css/main.47bf0f6f.css",
+    "main.js": "/my-pizza/static/js/main.18ffa028.js",
+    "static/media/logo-svg.svg": "/my-pizza/static/media/logo-svg.2a12da75338207c772978e6e88f70385.svg",
+    "static/media/empty-cart.png": "/my-pizza/static/media/empty-cart.db905d1f4b063162f25b.png",
+    "index.html": "/my-pizza/index.html",
+    "static/media/close.svg": "/my-pizza/static/media/close.3721b02ec61c1015e90388746e266d15.svg",
+    "static/media/arrow.svg": "/my-pizza/static/media/arrow.4e4ff56d18ba54fd1c40ab686efa9823.svg",
+    "main.47bf0f6f.css.map": "/my-pizza/static/css/main.47bf0f6f.css.map",
+    "main.18ffa028.js.map": "/my-pizza/static/js/main.18ffa028.js.map"
   },
   "entrypoints": [
     "static/css/main.47bf0f6f.css",
-    "static/js/main.0ab64775.js"
+    "static/js/main.18ffa028.js"
   ]
 }
