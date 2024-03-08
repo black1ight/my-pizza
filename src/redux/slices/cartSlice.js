@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 import { calcTotalPrice } from "../../utils/totalPrice";
 
 const initialState = {
@@ -64,8 +64,13 @@ export const cartSlice = createSlice({
     },
   },
 });
-export const selectCartItemById = (id) => (state) =>
-  state.cart.items.filter((obj) => obj.id === id);
+// export const selectCartItemById = (id) => (state) =>
+//   state.cart.items.filter((obj) => obj.id === id);
+
+const getCartItems = (state) => state.cart.items;
+
+export const selectCartItemById = (id) =>
+  createSelector(getCartItems, (items) => items.filter((obj) => obj.id === id));
 
 export const { addItem, minusItem, removeItem, clearItems } = cartSlice.actions;
 

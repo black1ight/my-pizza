@@ -10,11 +10,16 @@ import { fetchPizzas } from "../../redux/slices/pizzaSlise";
 
 const sortList = ["title", "price", "rating"];
 
+const Root = styled.div`
+  position: relative;
+`;
+
 const ContentItems = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 0px;
 `;
 
 const Home = () => {
@@ -27,7 +32,7 @@ const Home = () => {
 
   const getPizzas = async () => {
     const category = categoryId > 0 ? `category=${categoryId}` : "";
-    const arrow = sortArrow ? "order=desc" : "order=asc";
+    const arrow = sortArrow ? "order=asc" : "order=desc";
     const search = searchValue ? `search=${searchValue}` : "";
 
     dispatch(
@@ -45,7 +50,7 @@ const Home = () => {
     getPizzas();
   }, [categoryId, sortType, sortArrow, searchValue]);
   return (
-    <>
+    <Root>
       <Header />
       <Categories />
       <Sort />
@@ -54,7 +59,7 @@ const Home = () => {
           ? [...new Array(8)].map((_, index) => <Skeleton key={index} />)
           : items.map((obj, index) => <PizzaBlock {...obj} key={obj.title} />)}
       </ContentItems>
-    </>
+    </Root>
   );
 };
 

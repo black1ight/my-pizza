@@ -1,24 +1,27 @@
 import styled from "styled-components";
 
 export const Root = styled.div`
+  position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: ${(props) => (props.page === "fullPizza" ? "row" : "column")};
+  flex-wrap: wrap;
   justify-content: space-between;
-  max-width: 280px;
+  margin: 0 auto;
   border-radius: 10px;
-  /* border: 1px solid ${(props) => props.theme.colors.secondary}; */
+  cursor: pointer;
+  border: ${(props) =>
+    props.page !== "fullPizza" && "1px solid rgba(182, 182, 182, 0.5)"};
 
   overflow: hidden;
   padding: 10px 10px 10px 10px;
-  margin-top: 30px;
+  margin-top: ${(props) => (props.page === "fullPizza" ? "0" : "30px")};
+
   transition: all 0.1s linear;
 
   &:hover {
-    transform: scale(1.02);
-    box-shadow: 0px 0px 10px 1px rgba(182, 182, 182, 1);
-  }
-
-  & div {
+    transform: ${(props) => props.page !== "fullPizza"} && "scale(1.02)";
+    box-shadow: ${(props) => props.page !== "fullPizza"} &&
+      "0px 4px 28px rgba(0, 0, 0, 0.2)";
   }
 
   & ul {
@@ -43,16 +46,21 @@ export const Root = styled.div`
   }
 `;
 
+export const Top = styled.div`
+  width: 100%;
+`;
+
 export const Image = styled.div`
   & img {
     width: 100%;
-    object-fit: fill;
+    object-fit: cover;
   }
 `;
 
 export const Title = styled.h4`
+  display: ${(props) => (props.page === "fullPizza" ? "none" : "block")};
   font-size: 24px;
-  margin: 10px 0 0 0;
+  /* margin: 10px 0 0 0; */
   text-align: center;
 `;
 
@@ -64,19 +72,25 @@ export const Subtitle = styled.p`
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
+  display: ${(props) => (props.page === "fullPizza" ? "none" : "-webkit-box")};
+`;
+
+export const Select = styled.div`
+  width: 100%;
 `;
 
 export const Type = styled.li`
   background-color: ${(props) =>
-    props.typeActive === props.typeIndex && props.theme.colors.secondary};
+    props.typeactive === props.typeindex && props.theme.colors.secOpacity};
 `;
 export const Size = styled.li`
   background-color: ${(props) =>
-    props.sizeActive === props.sizeIndex && props.theme.colors.secondary};
+    props.sizeactive === props.sizeindex && props.theme.colors.secOpacity};
 `;
 export const Board = styled.li`
   background-color: ${(props) =>
-    props.boardActive === props.boardIndex && props.theme.colors.secondary};
+    props.boardactive === props.boardindex && props.theme.colors.secOpacity};
+  opacity: ${(props) => (props.categoryindex !== 5 ? 1 : 0.5)};
 `;
 
 export const Bottom = styled.div`
@@ -100,7 +114,7 @@ export const Btn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 180px;
+  width: 70%;
   right: 0;
   ${(props) => props.theme.btn}
   border: none;

@@ -35,7 +35,7 @@ export const Arrow = styled.img`
   top: 3px;
   width: 12px;
   cursor: pointer;
-  transform: ${(props) => (props.arrow ? "rotate(180deg)" : "")};
+  transform: ${(props) => (props.arrow === "true" ? "rotate(180deg)" : "")};
   & g {
     & path {
       fill: ${(props) => props.theme.colors.primary};
@@ -59,7 +59,7 @@ export const SortPopup = styled.ul`
 
 export const PopupItem = styled.li`
   cursor: pointer;
-  font-weight: ${(props) => (props.sortType === props.itemIndex ? 700 : 400)};
+  font-weight: ${(props) => (props.sorttype === props.itemindex ? 700 : 400)};
   &:hover {
     border-radius: 5px;
     text-decoration: underline;

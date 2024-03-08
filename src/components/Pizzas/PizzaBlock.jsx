@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, selectCartItemById } from "../../redux/slices/cartSlice";
 import * as S from "./styles";
+import { Link } from "react-router-dom";
 
 const PizzaBlock = ({
   id,
@@ -11,7 +12,9 @@ const PizzaBlock = ({
   types,
   sizes,
   price,
-  board,
+  category,
+  page,
+  noadd,
 }) => {
   const [typeActive, setTypeActive] = useState(0);
   const [sizeActive, setSizeActive] = useState(0);
@@ -20,15 +23,16 @@ const PizzaBlock = ({
   const boardName = ["Філадельфія", "Хот-Дог"];
   const sizesPriceCreate = [1, 1.1, 1.2];
 
-  const cartItem = useSelector(selectCartItemById(id));
   const dispatch = useDispatch();
+
+  const cartItem = useSelector(selectCartItemById(id));
 
   const addedCount = cartItem
     ? cartItem.reduce((sum, obj) => obj.count + sum, 0)
     : 0;
 
   const onChangeBoard = (i) => {
-    setBoardActive(i);
+    category !== 5 && setBoardActive(i);
     if (i === boardActive) {
       setBoardActive(null);
     }
@@ -57,27 +61,32 @@ const PizzaBlock = ({
     board: boardName[boardActive],
     price: customPrice,
     count: 0,
+    noAdd: noadd,
   };
 
   const onClickAdd = () => {
     dispatch(addItem(item));
+    console.log(item);
   };
   return (
-    <S.Root>
-      <div>
-        <S.Image>
-          <img src={imageUrl} alt="pizza" />
-        </S.Image>
-        <S.Title>{title}</S.Title>
-        <S.Subtitle>{subtitle}</S.Subtitle>
-      </div>
-      <div>
+    <S.Root categoryindex={category} page={page}>
+      <Link to={`/pizza/${id}`}>
+        <S.Top>
+          <S.Image page={page}>
+            <img src={imageUrl} alt="pizza" />
+          </S.Image>
+          <S.Title page={page}>{title}</S.Title>
+          <S.Subtitle page={page}>{subtitle}</S.Subtitle>
+        </S.Top>
+      </Link>
+      <S.Select>
         <ul>
           {types.map((type, index) => (
             <S.Type
               onClick={() => setTypeActive(index)}
-              typeActive={typeActive}
-              typeIndex={index}
+              typeactive={typeActive}
+              typeindex={index}
+              key={type}
             >
               {pizzaTypes[type]}
             </S.Type>
@@ -87,8 +96,9 @@ const PizzaBlock = ({
           {sizes.map((size, i) => (
             <S.Size
               onClick={() => setSizeActive(i)}
-              sizeActive={sizeActive}
-              sizeIndex={i}
+              sizeactive={sizeActive}
+              sizeindex={i}
+              key={size}
             >
               {size} см.
             </S.Size>
@@ -98,8 +108,10 @@ const PizzaBlock = ({
           {boardName.map((name, i) => (
             <S.Board
               onClick={() => onChangeBoard(i)}
-              boardActive={boardActive}
-              boardIndex={i}
+              categoryindex={category}
+              boardactive={boardActive}
+              boardindex={i}
+              key={name}
             >
               {name}
             </S.Board>
@@ -130,7 +142,7 @@ const PizzaBlock = ({
             )}
           </S.Btn>
         </S.Bottom>
-      </div>
+      </S.Select>
     </S.Root>
   );
 };

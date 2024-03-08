@@ -5,12 +5,13 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import Cart from "./pages/Cart/Cart";
 import { theme } from "./Theme";
+import FullPizza from "./pages/FullPizza/FullPizza";
 
 const Container = styled.div`
   background-color: #fff;
-  padding: 30px;
   border-radius: 10px;
-  width: 90%;
+  width: 1200px;
+  /* height: 90vh; */
   margin: 0 auto;
 `;
 
@@ -20,6 +21,7 @@ function App() {
       <Container>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/pizza/:id" element={<FullPizza />} />
           <Route path="/cart" element={<Cart />} />
         </Routes>
       </Container>

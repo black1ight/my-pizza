@@ -12,24 +12,6 @@ const categories = [
   "Закриті",
 ];
 
-const ListItem = styled.li`
-  padding: 10px 20px;
-  border: 1px solid ${(props) => props.theme.colors.primary};
-  border-radius: 20px;
-  background-color: ${(props) =>
-    props.categoryId === props.listItemIndex ? props.theme.colors.primary : ""};
-  color: ${(props) =>
-    props.categoryId === props.listItemIndex
-      ? "#fff"
-      : props.theme.colors.primary};
-
-  &:hover {
-    cursor: pointer;
-    background-color: ${(props) => props.theme.colors.primary};
-    color: #fff;
-  }
-`;
-
 const Categories = () => {
   const categoryId = useSelector((state) => state.filter.categoryId);
   const dispatch = useDispatch();
@@ -41,16 +23,16 @@ const Categories = () => {
     <S.Root>
       <S.List>
         {categories.map((name, id) => (
-          <ListItem
+          <S.ListItem
             key={name}
-            categoryId={categoryId}
-            listItemIndex={id}
+            categoryindex={categoryId}
+            listitemindex={id}
             onClick={() => {
               onChangeCategory(id);
             }}
           >
             {name}
-          </ListItem>
+          </S.ListItem>
         ))}
       </S.List>
     </S.Root>

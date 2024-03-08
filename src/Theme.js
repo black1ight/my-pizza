@@ -1,7 +1,9 @@
 export const theme = {
   colors: {
-    primary: "#2d3436",
-    secondary: "#b6b6b6",
+    primary: "rgba(45, 52, 54, 1)",
+    primOpacity: "rgba(45, 52, 54, 0.5)",
+    secondary: "rgba(182, 182, 182, 1)",
+    secOpacity: "rgba(182, 182, 182, 0.3)",
     btn: "rgb(254, 0, 33)",
     hover: {
       filter: "brightness(1.2)",
