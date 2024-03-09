@@ -11,6 +11,7 @@ const Container = styled.div`
   background-color: #fff;
   border-radius: 10px;
   width: 1200px;
+  padding: 30px;
   /* height: 90vh; */
   margin: 0 auto;
 `;
@@ -21,7 +22,7 @@ function App() {
       <Container>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/pizza/:id" element={<FullPizza />} />
+          {/* <Route path="/pizza/:id" element={<FullPizza />} /> */}
           <Route path="/cart" element={<Cart />} />
         </Routes>
       </Container>

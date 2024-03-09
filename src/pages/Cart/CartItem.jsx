@@ -3,7 +3,17 @@ import * as S from "./styled";
 import { addItem, minusItem, removeItem } from "../../redux/slices/cartSlice";
 import { useDispatch } from "react-redux";
 
-const CartItem = ({ count, title, price, imageUrl, type, size, id, board }) => {
+const CartItem = ({
+  count,
+  title,
+  price,
+  imageUrl,
+  type,
+  size,
+  id,
+  board,
+  noAdd,
+}) => {
   const dispatch = useDispatch();
 
   const onClickMinus = () => {
@@ -25,8 +35,9 @@ const CartItem = ({ count, title, price, imageUrl, type, size, id, board }) => {
       <S.Descr>
         <h4>{title}</h4>
         <span>{type}</span>
-        <span>{size} см</span>
-        {board ? <span>борт "{board}"</span> : ""}
+        <span>Ø {size} см</span>
+        {board ? <span>борт: "{board}"</span> : ""}
+        {noAdd ? <S.NoAdd>{noAdd}</S.NoAdd> : ""}
       </S.Descr>
       <S.Count>
         <S.SvgMinus

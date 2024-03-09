@@ -59,8 +59,10 @@ export const Item = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 20px;
+  border: 1px solid ${(props) => props.theme.colors.secOpacity};
   border-radius: 10px;
   overflow: hidden;
+  margin-bottom: 10px;
   & img {
     max-width: 100px;
   }
@@ -76,6 +78,7 @@ export const Item = styled.div`
 export const Descr = styled.div`
   width: 100%;
   max-width: 200px;
+
   & h4 {
     font-size: 18px;
   }
@@ -83,6 +86,11 @@ export const Descr = styled.div`
     display: block;
   }
 `;
+
+export const NoAdd = styled.span`
+  text-decoration: line-through;
+`;
+
 export const Count = styled.div`
   & svg {
     transform: scale(1.2);

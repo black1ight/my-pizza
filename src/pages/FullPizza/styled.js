@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const Root = styled.div`
-  position: absolute;
+  position: fixed;
   width: 100%;
   max-width: 600px;
   left: 50%;
-  top: calc(50% - 30px);
+  top: 40%;
   transform: translate(-50%, -50%);
   display: flex;
   background-color: #fff;
@@ -17,6 +17,14 @@ export const Root = styled.div`
   /* overflow: hidden; */
   border-radius: 10px;
   /* padding: 10px; */
+  z-index: 100;
+`;
+
+export const Close = styled.div`
+  position: absolute;
+  right: -30px;
+  z-index: 100;
+  cursor: pointer;
 `;
 
 export const Card = styled.div`
@@ -30,6 +38,13 @@ export const Content = styled.div`
   flex-direction: column;
   background-color: rgba(182, 182, 182, 0.2);
   border-radius: 0 10px 10px 0;
+`;
+
+export const Reviews = styled.div`
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
 `;
 
 export const Rating = styled.div`

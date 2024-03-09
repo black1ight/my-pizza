@@ -15,6 +15,9 @@ export const fetchPizzas = createAsyncThunk(
 const initialState = {
   items: [],
   status: "",
+  activePizzaId: null,
+  activeItem: [],
+  openPopup: false,
 };
 
 export const pizzaSlice = createSlice({
@@ -23,6 +26,16 @@ export const pizzaSlice = createSlice({
   reducers: {
     setItems(state, action) {
       state.items = action.payload;
+    },
+    setActiveItem(state, action) {
+      state.activeItem = action.payload;
+    },
+    setActivePizzaId(state, action) {
+      state.activePizzaId = action.payload;
+    },
+    setOpenPopup(state, action) {
+      state.openPopup = action.payload;
+      console.log(action.payload);
     },
   },
   extraReducers: (builder) => {
@@ -41,6 +54,7 @@ export const pizzaSlice = createSlice({
   },
 });
 
-export const { setItems } = pizzaSlice.actions;
+export const { setItems, setActivePizzaId, setActiveItem, setOpenPopup } =
+  pizzaSlice.actions;
 
 export default pizzaSlice.reducer;

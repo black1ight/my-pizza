@@ -7,7 +7,8 @@ import styled from "styled-components";
 import Skeleton from "../../components/Pizzas/Skeleton";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPizzas } from "../../redux/slices/pizzaSlise";
-
+import FullPizza from "../FullPizza/FullPizza";
+import PageLock from "../../components/PageLock";
 const sortList = ["title", "price", "rating"];
 
 const Root = styled.div`
@@ -20,10 +21,14 @@ const ContentItems = styled.div`
   grid-template-rows: 1fr;
   grid-column-gap: 20px;
   grid-row-gap: 0px;
+  overflow: hidden;
 `;
 
 const Home = () => {
-  const { items, status } = useSelector((state) => state.pizza);
+  const { items, status, activePizzaId } = useSelector((state) => state.pizza);
+
+  const openPopup = useSelector((state) => state.pizza.openPopup);
+
   const dispatch = useDispatch();
 
   const { searchValue, categoryId, sortType, sortArrow } = useSelector(
@@ -49,8 +54,10 @@ const Home = () => {
   useEffect(() => {
     getPizzas();
   }, [categoryId, sortType, sortArrow, searchValue]);
+
   return (
     <Root>
+      {openPopup && <FullPizza id={activePizzaId} />}
       <Header />
       <Categories />
       <Sort />
@@ -59,6 +66,7 @@ const Home = () => {
           ? [...new Array(8)].map((_, index) => <Skeleton key={index} />)
           : items.map((obj, index) => <PizzaBlock {...obj} key={obj.title} />)}
       </ContentItems>
+      {openPopup && <PageLock />}
     </Root>
   );
 };

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, selectCartItemById } from "../../redux/slices/cartSlice";
 import * as S from "./styles";
-import { Link } from "react-router-dom";
+import { setActivePizzaId, setOpenPopup } from "../../redux/slices/pizzaSlise";
 
 const PizzaBlock = ({
   id,
@@ -66,19 +66,23 @@ const PizzaBlock = ({
 
   const onClickAdd = () => {
     dispatch(addItem(item));
-    console.log(item);
+  };
+
+  const onClickPizza = () => {
+    dispatch(setActivePizzaId(id));
+    dispatch(setOpenPopup(true));
   };
   return (
     <S.Root categoryindex={category} page={page}>
-      <Link to={`/pizza/${id}`}>
-        <S.Top>
-          <S.Image page={page}>
-            <img src={imageUrl} alt="pizza" />
-          </S.Image>
-          <S.Title page={page}>{title}</S.Title>
-          <S.Subtitle page={page}>{subtitle}</S.Subtitle>
-        </S.Top>
-      </Link>
+      {/* <Link to={`/pizza/${id}`}> */}
+      <S.Top onClick={onClickPizza}>
+        <S.Image page={page}>
+          <img src={imageUrl} alt="pizza" />
+        </S.Image>
+        <S.Title page={page}>{title}</S.Title>
+        <S.Subtitle page={page}>{subtitle}</S.Subtitle>
+      </S.Top>
+      {/* </Link> */}
       <S.Select>
         <ul>
           {types.map((type, index) => (
