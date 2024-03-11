@@ -72,7 +72,7 @@ const ReviewsBlock = ({ reviews, id }) => {
           />
           <S.Bottom>
             <S.Title>Оберіть зірочку:</S.Title>
-            <S.Stars>
+            <S.RevStars>
               <span onClick={() => setChoiceStar(1)}>
                 {choiceStar >= 1 ? <FaStar /> : <FaRegStar />}
               </span>
@@ -88,7 +88,7 @@ const ReviewsBlock = ({ reviews, id }) => {
               <span onClick={() => setChoiceStar(5)}>
                 {choiceStar >= 5 ? <FaStar /> : <FaRegStar />}
               </span>
-            </S.Stars>
+            </S.RevStars>
           </S.Bottom>
           <button onClick={sendReview}>Залишити відгук</button>
         </S.Form>
