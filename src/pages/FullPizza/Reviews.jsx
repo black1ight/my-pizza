@@ -35,13 +35,13 @@ const ReviewsBlock = ({ reviews, id }) => {
     setOpenForm(false);
   };
   return (
-    <Root>
-      <List>
+    <S.RevRoot>
+      <S.List>
         {reviews.length > 0 &&
           reviews.map((item, id) => {
             return (
-              <Item key={id}>
-                <Top>
+              <S.Item key={id}>
+                <S.Top>
                   <h4>{item.name}</h4>
                   <ul>
                     {[...new Array(item.stars)].map((_, id) => (
@@ -51,14 +51,14 @@ const ReviewsBlock = ({ reviews, id }) => {
                     ))}
                   </ul>
                   <span>{item.date}</span>
-                </Top>
+                </S.Top>
                 <p>{item.message}</p>
-              </Item>
+              </S.Item>
             );
           })}
-      </List>
+      </S.List>
       {openForm ? (
-        <Form>
+        <S.Form>
           <input
             onChange={onChangeInput}
             value={inputValue}
@@ -70,9 +70,9 @@ const ReviewsBlock = ({ reviews, id }) => {
             rows="5"
             placeholder="Відгук"
           />
-          <Bottom>
-            <Title>Оберіть зірочку:</Title>
-            <Stars>
+          <S.Bottom>
+            <S.Title>Оберіть зірочку:</S.Title>
+            <S.Stars>
               <span onClick={() => setChoiceStar(1)}>
                 {choiceStar >= 1 ? <FaStar /> : <FaRegStar />}
               </span>
@@ -88,16 +88,16 @@ const ReviewsBlock = ({ reviews, id }) => {
               <span onClick={() => setChoiceStar(5)}>
                 {choiceStar >= 5 ? <FaStar /> : <FaRegStar />}
               </span>
-            </Stars>
-          </Bottom>
+            </S.Stars>
+          </S.Bottom>
           <button onClick={sendReview}>Залишити відгук</button>
-        </Form>
+        </S.Form>
       ) : (
-        <Form>
+        <S.Form>
           <button onClick={() => setOpenForm(true)}>Залишити відгук</button>
-        </Form>
+        </S.Form>
       )}
-    </Root>
+    </S.RevRoot>
   );
 };
 
