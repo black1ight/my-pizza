@@ -77,7 +77,14 @@ const PizzaBlock = ({
       {/* <Link to={`/pizza/${id}`}> */}
       <S.Top onClick={onClickPizza}>
         <S.Image page={page}>
-          <img src={imageUrl} alt="pizza" />
+          <img
+            src={
+              imageUrl
+                ? imageUrl
+                : "https://placehold.co/600x600?text=Loading..."
+            }
+            alt="pizza"
+          />
         </S.Image>
         <S.Title page={page}>{title}</S.Title>
         <S.Subtitle page={page}>{subtitle}</S.Subtitle>

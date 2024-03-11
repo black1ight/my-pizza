@@ -33,6 +33,7 @@ const ReviewsBlock = ({ reviews, id }) => {
   const sendReview = () => {
     dispatch(setReview(newReview));
     setOpenForm(false);
+    setChoiceStar(0);
   };
   return (
     <S.RevRoot>
