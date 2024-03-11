@@ -49,7 +49,6 @@ export const Reviews = styled.div`
 
 export const Rating = styled.div`
   display: flex;
-  white-space: nowrap;
 `;
 export const Stars = styled.div`
   margin-left: 10px;
@@ -123,5 +122,131 @@ export const NoAdd = styled.div`
       opacity: 1;
       cursor: pointer;
     }
+  }
+`;
+
+// ======REVIEWS=======
+
+export const RevRoot = styled.div`
+  position: absolute;
+
+  width: 50%;
+  height: calc(100% - 40px);
+  padding: 10px;
+  margin-top: 10px;
+  top: 30px;
+  right: 0;
+  z-index: 200;
+  background-color: #fff;
+  border: 1px solid ${(props) => props.theme.colors.secOpacity};
+  border-radius: 5px;
+
+  & h4 {
+    margin: 0 10px 5px 0;
+  }
+  & p {
+  }
+`;
+
+export const List = styled.ul`
+  cursor: auto;
+  height: 220px;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: ${(props) => props.theme.colors.secOpacity};
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: ${(props) => props.theme.colors.secondary};
+    border-radius: 5px;
+  }
+`;
+
+export const Item = styled.li`
+  font-size: 12px;
+  background-color: ${(props) => props.theme.colors.secOpacity};
+  margin: 0 5px 10px 0;
+  padding: 5px;
+  border-radius: 5px;
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+export const Top = styled.div`
+  display: flex;
+  & ul {
+    display: flex;
+  }
+  & li {
+  }
+  & span {
+    margin-left: auto;
+    font-size: 10px;
+  }
+`;
+
+export const Form = styled.div`
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 10px;
+  background-color: ${(props) => props.theme.colors.secOpacity};
+  border-radius: 0 0 5px 0;
+
+  & input {
+    border: none;
+    outline: none;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    &::placeholder {
+      font-size: 12px;
+    }
+  }
+
+  & textarea {
+    resize: none;
+    border: none;
+    outline: none;
+    margin-bottom: 10px;
+    padding: 5px;
+
+    border-radius: 5px;
+    &::placeholder {
+      font-size: 12px;
+    }
+  }
+
+  & button {
+    color: #fff;
+    border: none;
+    padding: 9px;
+    background-color: ${(props) => props.theme.colors.primary};
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover {
+      box-shadow: 2px 4px 28px rgba(0, 0, 0, 0.5);
+    }
+  }
+`;
+export const Bottom = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+`;
+export const Title = styled.span``;
+export const RevStars = styled.div`
+  margin-left: 10px;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  & span {
+    cursor: pointer;
   }
 `;

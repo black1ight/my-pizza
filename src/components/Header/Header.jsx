@@ -3,7 +3,7 @@ import * as S from "./styles";
 import Search from "../Search/Search";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-import Logo from "./../../assets/img/logo-svg.svg";
+import Logo from "./../../assets/img/logo.svg";
 
 const Header = () => {
   const { pathname } = useLocation();

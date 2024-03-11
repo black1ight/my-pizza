@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { setActiveItem, setOpenPopup } from "../../redux/slices/pizzaSlise";
 import { useDispatch, useSelector } from "react-redux";
 import * as S from "./styled";
@@ -15,16 +15,11 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 const weight = [300, 400, 700];
 
 const FullPizza = ({ id }) => {
-  // const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState("");
   const [openReviews, setOpenReviews] = useState(false);
   const inputRef = useRef();
-
-  const pizza = useSelector((state) =>
-    state.pizza.activeItem.find((obj) => obj.id === id)
-  );
 
   React.useEffect(() => {
     async function fetchPizza() {
@@ -32,7 +27,8 @@ const FullPizza = ({ id }) => {
         const { data } = await axios.get(
           `https://63f67ab959c944921f74dd84.mockapi.io/pizza`
         );
-        dispatch(setActiveItem(data));
+        const activePizza = data.filter((obj) => obj.id === id);
+        dispatch(setActiveItem(activePizza));
       } catch {
         alert("Помилка при отриманні піцц");
         navigate("/");
@@ -42,6 +38,8 @@ const FullPizza = ({ id }) => {
     fetchPizza();
   }, [navigate, dispatch, id]);
 
+  const pizza = useSelector((state) => state.pizza.activeItem[0]);
+
   const onChangeInput = (event) => {
     setInputValue(event.target.value);
   };
@@ -50,10 +48,6 @@ const FullPizza = ({ id }) => {
     setInputValue("");
     inputRef.current.focus();
   };
-
-  // const starIcon = () => {
-
-  // }
 
   if (!pizza) {
     return "Loading...";
@@ -68,9 +62,10 @@ const FullPizza = ({ id }) => {
       </S.Card>
       <S.Content>
         <S.Rating>
+          {openReviews && <ReviewsBlock {...pizza} />}
+
           <S.Reviews onClick={() => setOpenReviews(!openReviews)}>
-            <span>Відгуки: (0)</span>
-            {openReviews && <ReviewsBlock />}
+            <span>Відгуки: ({pizza.reviews.length})</span>
           </S.Reviews>
           <S.Stars>
             <span>

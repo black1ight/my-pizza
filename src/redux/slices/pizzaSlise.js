@@ -4,9 +4,9 @@ import axios from "axios";
 export const fetchPizzas = createAsyncThunk(
   "pizza/fetchPizza",
   async (params) => {
-    const { category, arrow, search, sortList, sortType, id } = params;
+    const { category, arrow, search, sortList, sortType } = params;
     const { data } = await axios.get(
-      `https://63f67ab959c944921f74dd84.mockapi.io/pizza?${category}&sortBy=${sortList[sortType]}&${arrow}&${search}&${id}`
+      `https://63f67ab959c944921f74dd84.mockapi.io/pizza?${category}&sortBy=${sortList[sortType]}&${arrow}&${search}`
     );
     return data;
   }
@@ -35,7 +35,9 @@ export const pizzaSlice = createSlice({
     },
     setOpenPopup(state, action) {
       state.openPopup = action.payload;
-      console.log(action.payload);
+    },
+    setReview(state, action) {
+      state.activeItem[0].reviews.unshift(action.payload);
     },
   },
   extraReducers: (builder) => {
@@ -54,7 +56,12 @@ export const pizzaSlice = createSlice({
   },
 });
 
-export const { setItems, setActivePizzaId, setActiveItem, setOpenPopup } =
-  pizzaSlice.actions;
+export const {
+  setItems,
+  setActivePizzaId,
+  setActiveItem,
+  setOpenPopup,
+  setReview,
+} = pizzaSlice.actions;
 
 export default pizzaSlice.reducer;
