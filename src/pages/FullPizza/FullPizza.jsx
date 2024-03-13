@@ -1,7 +1,11 @@
 import React, { useState, useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { setActiveItem, setOpenPopup } from "../../redux/slices/pizzaSlise";
+import {
+  setActiveItem,
+  setActivePizzaId,
+  setOpenPopup,
+} from "../../redux/slices/pizzaSlise";
 import { useDispatch, useSelector } from "react-redux";
 import * as S from "./styled";
 import Close from "../../assets/img/close.svg";
@@ -54,7 +58,13 @@ const FullPizza = ({ id }) => {
   }
   return (
     <S.Root>
-      <S.Close onClick={() => dispatch(setOpenPopup(false))}>
+      <S.Close
+        onClick={() => {
+          dispatch(setOpenPopup(false));
+          dispatch(setActiveItem([]));
+          dispatch(setActivePizzaId(null));
+        }}
+      >
         <IoIosCloseCircleOutline size="24px" color="#fff" />
       </S.Close>
       <S.Card>

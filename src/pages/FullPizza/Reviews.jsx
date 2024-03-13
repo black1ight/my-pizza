@@ -1,16 +1,22 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { FaStar } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { setReview } from "../../redux/slices/pizzaSlise";
 import * as S from "./styled";
-// import { FaStar } from "react-icons/fa";
+import { MdOutlineMessage } from "react-icons/md";
 import { FaRegStar } from "react-icons/fa6";
+import { useAuth } from "../../hooks/use-auth";
+import Auth from "../../components/Auth/Auth";
 
 const ReviewsBlock = ({ reviews, id }) => {
-  const [inputValue, setInputValue] = useState("");
+  const { isAuth, email } = useAuth();
+
+  const [inputValue, setInputValue] = useState(
+    isAuth ? email.split("@", 1).join() : ""
+  );
   const [messageValue, setMessageValue] = useState("");
   const [openForm, setOpenForm] = useState(false);
+  const [showAuthForm, setShowAuthForm] = useState(false);
   const [choiceStar, setChoiceStar] = useState(null);
 
   const dispatch = useDispatch();
@@ -35,10 +41,19 @@ const ReviewsBlock = ({ reviews, id }) => {
     setOpenForm(false);
     setChoiceStar(0);
   };
+
+  const addReview = () => {
+    if (isAuth) {
+      setOpenForm(true);
+    }
+    setShowAuthForm(true);
+  };
+
   return (
     <S.RevRoot>
+      {showAuthForm && <Auth />}
       <S.List>
-        {reviews.length > 0 &&
+        {reviews.length > 0 ? (
           reviews.map((item, id) => {
             return (
               <S.Item key={id}>
@@ -56,7 +71,14 @@ const ReviewsBlock = ({ reviews, id }) => {
                 <p>{item.message}</p>
               </S.Item>
             );
-          })}
+          })
+        ) : (
+          <S.NoMessage>
+            <span>
+              <MdOutlineMessage size="84px" color="grey" opacity="0.2" />
+            </span>
+          </S.NoMessage>
+        )}
       </S.List>
       {openForm ? (
         <S.Form>
@@ -95,7 +117,7 @@ const ReviewsBlock = ({ reviews, id }) => {
         </S.Form>
       ) : (
         <S.Form>
-          <button onClick={() => setOpenForm(true)}>Залишити відгук</button>
+          <button onClick={() => addReview()}>Залишити відгук</button>
         </S.Form>
       )}
     </S.RevRoot>

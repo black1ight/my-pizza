@@ -74,7 +74,6 @@ const PizzaBlock = ({
   };
   return (
     <S.Root categoryindex={category} page={page}>
-      {/* <Link to={`/pizza/${id}`}> */}
       <S.Top onClick={onClickPizza}>
         <S.Image page={page}>
           <img
@@ -89,7 +88,6 @@ const PizzaBlock = ({
         <S.Title page={page}>{title}</S.Title>
         <S.Subtitle page={page}>{subtitle}</S.Subtitle>
       </S.Top>
-      {/* </Link> */}
       <S.Select>
         <ul>
           {types.map((type, index) => (

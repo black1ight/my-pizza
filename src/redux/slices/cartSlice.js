@@ -64,8 +64,6 @@ export const cartSlice = createSlice({
     },
   },
 });
-// export const selectCartItemById = (id) => (state) =>
-//   state.cart.items.filter((obj) => obj.id === id);
 
 const getCartItems = (state) => state.cart.items;
 

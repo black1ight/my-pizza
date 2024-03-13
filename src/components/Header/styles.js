@@ -17,6 +17,13 @@ export const Logo = styled.img`
   width: 140px;
 `;
 
+export const AuthBtn = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+`;
+
 export const CartBtn = styled.div`
   position: absolute;
   top: 0;

@@ -14,7 +14,7 @@ const PageLock = () => {
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = "visible";
+      document.body.style.overflow = "auto";
     };
   });
   return <Root></Root>;

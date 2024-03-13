@@ -15,9 +15,10 @@ export const fetchPizzas = createAsyncThunk(
 const initialState = {
   items: [],
   status: "",
-  activePizzaId: null,
   activeItem: [],
+  activePizzaId: null,
   openPopup: false,
+  openAuthPopup: false,
 };
 
 export const pizzaSlice = createSlice({
@@ -35,6 +36,9 @@ export const pizzaSlice = createSlice({
     },
     setOpenPopup(state, action) {
       state.openPopup = action.payload;
+    },
+    setOpenAuthPopup(state, action) {
+      state.openAuthPopup = action.payload;
     },
     setReview(state, action) {
       state.activeItem[0].reviews.unshift(action.payload);
@@ -61,6 +65,7 @@ export const {
   setActivePizzaId,
   setActiveItem,
   setOpenPopup,
+  setOpenAuthPopup,
   setReview,
 } = pizzaSlice.actions;
 

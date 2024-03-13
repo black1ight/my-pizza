@@ -175,6 +175,20 @@ export const Item = styled.li`
     margin-bottom: 0;
   }
 `;
+export const NoMessage = styled.li`
+  position: absolute;
+  width: 100%;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+`;
+
 export const Top = styled.div`
   display: flex;
   & ul {

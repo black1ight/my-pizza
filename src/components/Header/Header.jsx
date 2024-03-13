@@ -2,12 +2,17 @@ import Navigation from "../Navigation/Navigation";
 import * as S from "./styles";
 import Search from "../Search/Search";
 import { Link, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Logo from "./../../assets/img/logo.png";
+import { TbLogin2 } from "react-icons/tb";
+import { setOpenAuthPopup } from "../../redux/slices/pizzaSlise";
+import { useAuth } from "../../hooks/use-auth";
 
 const Header = () => {
   const { pathname } = useLocation();
   const { items, totalPrice } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+  const { isAuth, email } = useAuth();
 
   return (
     <div>
@@ -17,6 +22,10 @@ const Header = () => {
         </Link>
         {pathname !== "/cart" && <Search />}
         <Navigation />
+        <S.AuthBtn onClick={() => dispatch(setOpenAuthPopup(true))}>
+          <span>{isAuth && email}</span>
+          <TbLogin2 size="24px" />
+        </S.AuthBtn>
         <Link to="/cart">
           <S.CartBtn items={items}>
             <svg width="33" height="33" viewBox="0 0 33 26" fill="none">
