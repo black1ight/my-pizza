@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { removeUser, setUser } from "../../redux/slices/userSlice";
+import { setUser } from "../../redux/slices/userSlice";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import {
   setOpenAuthPopup,
@@ -22,6 +22,7 @@ const Auth = () => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
+        console.log(user);
         dispatch(
           setUser({
             email: user.email,
@@ -30,11 +31,11 @@ const Auth = () => {
           })
         );
       })
-      .catch(console.error);
-  };
-
-  const logOut = () => {
-    dispatch(removeUser());
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorCode);
+      });
   };
 
   return signUp ? (
@@ -49,16 +50,9 @@ const Auth = () => {
       >
         <IoIosCloseCircleOutline size="24px" color="#fff" />
       </S.Close>
-      <S.Title>{isAuth ? `Wellcome` : "Log In"}</S.Title>
-      {isAuth ? (
-        <S.Form>
-          <S.Btn isAuth={isAuth}>
-            <button onClick={logOut}>Вийти</button>
-          </S.Btn>
-        </S.Form>
-      ) : (
-        <Form handleLogin={handleLogin} setSignUp={setSignUp} />
-      )}
+      <S.Title>Log In</S.Title>
+
+      <Form handleLogin={handleLogin} setSignUp={setSignUp} />
     </S.Root>
   );
 };

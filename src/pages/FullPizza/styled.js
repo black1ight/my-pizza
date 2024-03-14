@@ -1,4 +1,12 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const open = keyframes`
+  0% { transform: scale(0.2, 0.2);
+  opacity: 0.5 }
+  
+  100% { transform: scale(1, 1);
+  opacity: 1 }
+`;
 
 export const Root = styled.div`
   display: flex;
@@ -200,9 +208,9 @@ export const Top = styled.div`
 
 export const Form = styled.div`
   position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  left: calc(50% - 250px);
+  top: 30%;
+  /* transform: translate(-50%, -50%); */
   display: flex;
   flex-direction: column;
   width: 500px;
@@ -210,6 +218,7 @@ export const Form = styled.div`
   background-color: #fff;
   border-radius: 5px;
   z-index: 200;
+  animation: ${open} 0.2s ease-in;
 
   & input {
     border: none;

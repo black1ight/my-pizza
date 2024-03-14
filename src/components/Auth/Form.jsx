@@ -1,9 +1,22 @@
 import React, { useState } from "react";
 import * as S from "./styled";
+import {
+  setOpenAuthPopup,
+  setOpenPageLock,
+} from "../../redux/slices/pizzaSlise";
+import { useDispatch, useSelector } from "react-redux";
+import { useAuth } from "../../hooks/use-auth";
 
 const Form = ({ handleLogin, setSignUp }) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const dispatch = useDispatch();
+  const { isAuth } = useAuth();
+
+  if (isAuth) {
+    dispatch(setOpenAuthPopup(false));
+    dispatch(setOpenPageLock(false));
+  }
   return (
     <div>
       <S.Form>

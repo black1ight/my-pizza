@@ -2,20 +2,24 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../redux/slices/userSlice";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { setOpenPageLock } from "../../redux/slices/pizzaSlise";
+import {
+  setOpenPageLock,
+  setOpenAuthPopup,
+} from "../../redux/slices/pizzaSlise";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import * as S from "./styled";
+import { useAuth } from "../../hooks/use-auth";
 
 const SignUp = ({ setSignUp }) => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
+  const { isAuth } = useAuth();
 
   const handleSignUp = (email, password) => {
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
-        console.log(user);
         dispatch(
           setUser({
             email: user.email,
@@ -24,8 +28,17 @@ const SignUp = ({ setSignUp }) => {
           })
         );
       })
-      .catch(console.error);
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorCode);
+      });
   };
+
+  if (isAuth) {
+    dispatch(setOpenAuthPopup(false));
+    dispatch(setOpenPageLock(false));
+  }
 
   return (
     <S.Root>

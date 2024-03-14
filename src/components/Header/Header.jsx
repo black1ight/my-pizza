@@ -4,12 +4,13 @@ import Search from "../Search/Search";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Logo from "./../../assets/img/logo.png";
-import { TbLogin2 } from "react-icons/tb";
+import { TbLogin2, TbLogout2 } from "react-icons/tb";
 import {
   setOpenAuthPopup,
   setOpenPageLock,
 } from "../../redux/slices/pizzaSlise";
 import { useAuth } from "../../hooks/use-auth";
+import { removeUser } from "../../redux/slices/userSlice";
 
 const Header = () => {
   const { pathname } = useLocation();
@@ -27,12 +28,18 @@ const Header = () => {
         <Navigation />
         <S.AuthBtn
           onClick={() => {
-            dispatch(setOpenPageLock(true));
-            dispatch(setOpenAuthPopup(true));
+            if (isAuth) {
+              if (window.confirm("Ви дійсно бажаєте вийти?")) {
+                dispatch(removeUser());
+              }
+            } else {
+              dispatch(setOpenPageLock(true));
+              dispatch(setOpenAuthPopup(true));
+            }
           }}
         >
           <span>{isAuth && email}</span>
-          <TbLogin2 size="24px" />
+          {isAuth ? <TbLogout2 size="24px" /> : <TbLogin2 size="24px" />}
         </S.AuthBtn>
         <Link to="/cart">
           <S.CartBtn items={items}>

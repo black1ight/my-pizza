@@ -1,10 +1,17 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const open = keyframes`
+  0% { transform: scale(0.2, 0.2);
+  opacity: 0.5 }
+  
+  100% { transform: scale(1, 1);
+  opacity: 1 }
+`;
 
 export const Root = styled.div`
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: calc(50% - (150px));
+  left: calc(50% - (150px));
   display: flex;
   flex-direction: column;
   justify-content: ${(props) => (props.isAuth ? "center" : "end")};
@@ -16,6 +23,7 @@ export const Root = styled.div`
   border: 1px solid #fff;
   background: rgb(255, 255, 255);
   z-index: 300;
+  animation: ${open} 0.2s ease-out;
 `;
 
 export const Close = styled.div`
@@ -36,7 +44,6 @@ export const Form = styled.div`
   & button {
     font-size: 16px;
     padding: 10px 10px;
-    border-radius: 10px;
     outline: none;
     border: none;
     cursor: pointer;
@@ -53,6 +60,8 @@ export const Btn = styled.div`
   display: flex;
   gap: 10px;
   & button {
+    border-radius: 10px;
+
     width: ${(props) => (props.isAuth ? "100%" : "50%")};
     background-color: ${(props) => props.theme.colors.primary};
     /* border: 1px solid ${(props) => props.theme.colors.primary}; */
