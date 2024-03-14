@@ -5,7 +5,10 @@ import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Logo from "./../../assets/img/logo.png";
 import { TbLogin2 } from "react-icons/tb";
-import { setOpenAuthPopup } from "../../redux/slices/pizzaSlise";
+import {
+  setOpenAuthPopup,
+  setOpenPageLock,
+} from "../../redux/slices/pizzaSlise";
 import { useAuth } from "../../hooks/use-auth";
 
 const Header = () => {
@@ -22,7 +25,12 @@ const Header = () => {
         </Link>
         {pathname !== "/cart" && <Search />}
         <Navigation />
-        <S.AuthBtn onClick={() => dispatch(setOpenAuthPopup(true))}>
+        <S.AuthBtn
+          onClick={() => {
+            dispatch(setOpenPageLock(true));
+            dispatch(setOpenAuthPopup(true));
+          }}
+        >
           <span>{isAuth && email}</span>
           <TbLogin2 size="24px" />
         </S.AuthBtn>

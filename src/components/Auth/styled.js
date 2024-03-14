@@ -15,7 +15,7 @@ export const Root = styled.div`
   border-radius: 10px;
   border: 1px solid #fff;
   background: rgb(255, 255, 255);
-  z-index: 200;
+  z-index: 300;
 `;
 
 export const Close = styled.div`

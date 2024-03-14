@@ -1,39 +1,31 @@
 import styled from "styled-components";
 
 export const Root = styled.div`
-  position: fixed;
-  width: 100%;
-  max-width: 600px;
-  left: 50%;
-  top: 40%;
-  transform: translate(-50%, -50%);
   display: flex;
+  justify-content: center;
   background-color: #fff;
-  /* display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: #fff; */
-  margin-top: 50px;
-  /* overflow: hidden; */
+  gap: 20px;
+
+  margin-top: 100px;
   border-radius: 10px;
-  /* padding: 10px; */
   z-index: 100;
 `;
 
 export const Close = styled.div`
   position: absolute;
   right: -30px;
+  top: 0;
   z-index: 100;
   cursor: pointer;
 `;
 
 export const Card = styled.div`
-  width: 50%;
+  width: 30%;
 `;
 
 export const Content = styled.div`
-  width: 50%;
-  padding: 10px;
+  width: 70%;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   background-color: rgba(182, 182, 182, 0.2);
@@ -48,6 +40,7 @@ export const Reviews = styled.div`
 `;
 
 export const Rating = styled.div`
+  position: relative;
   display: flex;
 `;
 export const Stars = styled.div`
@@ -57,7 +50,16 @@ export const Stars = styled.div`
   & svg {
   }
 `;
+
+export const BlockInfo = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 20px;
+`;
+
 export const Size = styled.div`
+  width: 50%;
   padding-top: 20px;
   & ul {
     position: relative;
@@ -79,7 +81,7 @@ export const Size = styled.div`
 `;
 
 export const Descr = styled.div`
-  flex-grow: 2;
+  width: 50%;
   padding-top: 20px;
   & h3 {
     font-size: 24px;
@@ -91,6 +93,7 @@ export const Descr = styled.div`
 `;
 
 export const NoAdd = styled.div`
+  width: 40%;
   padding-top: 20px;
   & h4 {
     font-size: 16px;
@@ -128,15 +131,12 @@ export const NoAdd = styled.div`
 // ======REVIEWS=======
 
 export const RevRoot = styled.div`
-  position: absolute;
+  /* position: absolute; */
+  flex-grow: 3;
 
-  width: 50%;
-  height: calc(100% - 40px);
+  width: 100%;
   padding: 10px;
   margin-top: 10px;
-  top: 30px;
-  right: 0;
-  z-index: 200;
   background-color: #fff;
   border: 1px solid ${(props) => props.theme.colors.secOpacity};
   border-radius: 5px;
@@ -150,7 +150,7 @@ export const RevRoot = styled.div`
 
 export const List = styled.ul`
   cursor: auto;
-  height: 220px;
+  height: 90%;
   overflow-y: scroll;
 
   &::-webkit-scrollbar {
@@ -176,11 +176,7 @@ export const Item = styled.li`
   }
 `;
 export const NoMessage = styled.li`
-  position: absolute;
   width: 100%;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -203,22 +199,25 @@ export const Top = styled.div`
 `;
 
 export const Form = styled.div`
-  position: absolute;
-  left: 0;
-  bottom: 0;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 500px;
   padding: 10px;
-  background-color: ${(props) => props.theme.colors.secOpacity};
-  border-radius: 0 0 5px 0;
+  background-color: #fff;
+  border-radius: 5px;
+  z-index: 200;
 
   & input {
     border: none;
     outline: none;
     margin-bottom: 10px;
-    padding: 5px;
+    padding: 10px;
     border-radius: 5px;
+    border: 1px solid ${(props) => props.theme.colors.secondary};
     &::placeholder {
       font-size: 12px;
     }
@@ -229,26 +228,27 @@ export const Form = styled.div`
     border: none;
     outline: none;
     margin-bottom: 10px;
-    padding: 5px;
-
+    padding: 10px;
+    border: 1px solid ${(props) => props.theme.colors.secondary};
     border-radius: 5px;
     &::placeholder {
       font-size: 12px;
     }
   }
-
-  & button {
-    color: #fff;
-    border: none;
-    padding: 9px;
-    background-color: ${(props) => props.theme.colors.primary};
-    border-radius: 5px;
-    cursor: pointer;
-    &:hover {
-      box-shadow: 2px 4px 28px rgba(0, 0, 0, 0.5);
-    }
+`;
+export const Button = styled.button`
+  width: 100%;
+  color: #fff;
+  border: none;
+  padding: 9px;
+  background-color: ${(props) => props.theme.colors.primary};
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 2px 4px 28px rgba(0, 0, 0, 0.5);
   }
 `;
+
 export const Bottom = styled.div`
   display: flex;
   justify-content: space-between;

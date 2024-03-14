@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { removeUser, setUser } from "../../redux/slices/userSlice";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { setOpenAuthPopup } from "../../redux/slices/pizzaSlise";
+import {
+  setOpenAuthPopup,
+  setOpenPageLock,
+} from "../../redux/slices/pizzaSlise";
 import { IoIosCloseCircleOutline } from "react-icons/io";
 import * as S from "./styled";
 import SignUp from "./SignUp";
@@ -19,7 +22,6 @@ const Auth = () => {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
-        console.log(user);
         dispatch(
           setUser({
             email: user.email,
@@ -27,14 +29,12 @@ const Auth = () => {
             id: user.uid,
           })
         );
-        // userId && setSignUp(false);
       })
       .catch(console.error);
   };
 
   const logOut = () => {
     dispatch(removeUser());
-    console.log(isAuth);
   };
 
   return signUp ? (
@@ -44,6 +44,7 @@ const Auth = () => {
       <S.Close
         onClick={() => {
           dispatch(setOpenAuthPopup(false));
+          dispatch(setOpenPageLock(false));
         }}
       >
         <IoIosCloseCircleOutline size="24px" color="#fff" />

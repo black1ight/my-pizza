@@ -1,25 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { setReview } from "../../redux/slices/pizzaSlise";
+import {
+  setOpenAuthPopup,
+  setOpenPageLock,
+  setReview,
+} from "../../redux/slices/pizzaSlise";
 import * as S from "./styled";
 import { MdOutlineMessage } from "react-icons/md";
 import { FaRegStar } from "react-icons/fa6";
 import { useAuth } from "../../hooks/use-auth";
-import Auth from "../../components/Auth/Auth";
+import { IoIosCloseCircleOutline } from "react-icons/io";
 
 const ReviewsBlock = ({ reviews, id }) => {
   const { isAuth, email } = useAuth();
 
-  const [inputValue, setInputValue] = useState(
-    isAuth ? email.split("@", 1).join() : ""
-  );
+  const [inputValue, setInputValue] = useState("");
   const [messageValue, setMessageValue] = useState("");
   const [openForm, setOpenForm] = useState(false);
-  const [showAuthForm, setShowAuthForm] = useState(false);
   const [choiceStar, setChoiceStar] = useState(null);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    isAuth ? setInputValue(email.split("@", 1).join()) : setInputValue("");
+  }, [isAuth]);
 
   const newReview = {
     id: id,
@@ -38,20 +43,29 @@ const ReviewsBlock = ({ reviews, id }) => {
 
   const sendReview = () => {
     dispatch(setReview(newReview));
-    setOpenForm(false);
+    dispatch(setOpenPageLock(false));
+    setMessageValue("");
     setChoiceStar(0);
+    setOpenForm(false);
   };
 
   const addReview = () => {
     if (isAuth) {
       setOpenForm(true);
+      dispatch(setOpenPageLock(true));
+    } else {
+      dispatch(setOpenPageLock(true));
+      dispatch(setOpenAuthPopup(true));
     }
-    setShowAuthForm(true);
+  };
+
+  const onCloseForm = () => {
+    setOpenForm(false);
+    dispatch(setOpenPageLock(false));
   };
 
   return (
     <S.RevRoot>
-      {showAuthForm && <Auth />}
       <S.List>
         {reviews.length > 0 ? (
           reviews.map((item, id) => {
@@ -82,6 +96,9 @@ const ReviewsBlock = ({ reviews, id }) => {
       </S.List>
       {openForm ? (
         <S.Form>
+          <S.Close onClick={onCloseForm}>
+            <IoIosCloseCircleOutline size="24px" color="#fff" />
+          </S.Close>
           <input
             onChange={onChangeInput}
             value={inputValue}
@@ -90,7 +107,7 @@ const ReviewsBlock = ({ reviews, id }) => {
           <textarea
             onChange={onChangeMessage}
             value={messageValue}
-            rows="5"
+            rows="10"
             placeholder="Відгук"
           />
           <S.Bottom>
@@ -113,12 +130,10 @@ const ReviewsBlock = ({ reviews, id }) => {
               </span>
             </S.RevStars>
           </S.Bottom>
-          <button onClick={sendReview}>Залишити відгук</button>
+          <S.Button onClick={sendReview}>Залишити відгук</S.Button>
         </S.Form>
       ) : (
-        <S.Form>
-          <button onClick={() => addReview()}>Залишити відгук</button>
-        </S.Form>
+        <S.Button onClick={() => addReview()}>Залишити відгук</S.Button>
       )}
     </S.RevRoot>
   );

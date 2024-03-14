@@ -7,9 +7,7 @@ import styled from "styled-components";
 import Skeleton from "../../components/Pizzas/Skeleton";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPizzas } from "../../redux/slices/pizzaSlise";
-import FullPizza from "../FullPizza/FullPizza";
-import PageLock from "../../components/PageLock";
-import Auth from "../../components/Auth/Auth";
+
 const sortList = ["title", "price", "rating"];
 
 const Root = styled.div`
@@ -26,9 +24,7 @@ const ContentItems = styled.div`
 `;
 
 const Home = () => {
-  const { items, status, activePizzaId } = useSelector((state) => state.pizza);
-
-  const { openPopup, openAuthPopup } = useSelector((state) => state.pizza);
+  const { items, status } = useSelector((state) => state.pizza);
 
   const dispatch = useDispatch();
 
@@ -58,8 +54,6 @@ const Home = () => {
 
   return (
     <Root>
-      {openAuthPopup && <Auth />}
-      {openPopup && activePizzaId && <FullPizza id={activePizzaId} />}
       <Header />
       <Categories />
       <Sort />
@@ -68,7 +62,6 @@ const Home = () => {
           ? [...new Array(8)].map((_, index) => <Skeleton key={index} />)
           : items.map((obj, index) => <PizzaBlock {...obj} key={obj.title} />)}
       </ContentItems>
-      {openPopup | openAuthPopup && <PageLock />}
     </Root>
   );
 };

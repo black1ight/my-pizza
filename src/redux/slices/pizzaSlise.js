@@ -16,8 +16,7 @@ const initialState = {
   items: [],
   status: "",
   activeItem: [],
-  activePizzaId: null,
-  openPopup: false,
+  openPageLock: false,
   openAuthPopup: false,
 };
 
@@ -34,8 +33,8 @@ export const pizzaSlice = createSlice({
     setActivePizzaId(state, action) {
       state.activePizzaId = action.payload;
     },
-    setOpenPopup(state, action) {
-      state.openPopup = action.payload;
+    setOpenPageLock(state, action) {
+      state.openPageLock = action.payload;
     },
     setOpenAuthPopup(state, action) {
       state.openAuthPopup = action.payload;
@@ -64,7 +63,7 @@ export const {
   setItems,
   setActivePizzaId,
   setActiveItem,
-  setOpenPopup,
+  setOpenPageLock,
   setOpenAuthPopup,
   setReview,
 } = pizzaSlice.actions;

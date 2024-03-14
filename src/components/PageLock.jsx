@@ -7,7 +7,7 @@ const Root = styled.div`
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.8);
-  z-index: 50;
+  z-index: 200;
   overflow: hidden;
 `;
 const PageLock = () => {
