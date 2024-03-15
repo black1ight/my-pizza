@@ -1,16 +1,17 @@
 import React, { useState, useRef } from "react";
 import axios from "axios";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { setActiveItem, setActivePizzaId } from "../../redux/slices/pizzaSlise";
+import { useNavigate, useParams } from "react-router-dom";
+import { setActiveItem } from "../../redux/slices/pizzaSlise";
 import { useDispatch, useSelector } from "react-redux";
 import * as S from "./styled";
 import Close from "../../assets/img/close.svg";
+import DeliveryIcon from "../../assets/img/delivery-icon.png";
 
 import PizzaBlock from "../../components/Pizzas/PizzaBlock";
 import ReviewsBlock from "./Reviews";
 import { FaStar } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa6";
-import { IoIosCloseCircleOutline } from "react-icons/io";
+import { CiDiscount1 } from "react-icons/ci";
 import Header from "../../components/Header/Header";
 
 const weight = [300, 400, 700];
@@ -59,16 +60,6 @@ const FullPizza = () => {
     <div>
       <Header />
       <S.Root>
-        <Link to="/">
-          <S.Close
-            onClick={() => {
-              dispatch(setActiveItem([]));
-              dispatch(setActivePizzaId(null));
-            }}
-          >
-            <IoIosCloseCircleOutline size="24px" color="#fff" />
-          </S.Close>
-        </Link>
         <S.Card>
           <PizzaBlock noadd={inputValue} {...pizza} page="fullPizza" />
         </S.Card>
@@ -134,6 +125,12 @@ const FullPizza = () => {
                   ))}
                 </S.Size>
               </S.BlockInfo>
+              {/* <S.Option>
+                <img src="https://dominos.ua/_next/image/?url=https%3A%2F%2Fmedia-v3.dominos.ua%2FProducts%2Fsous-domynos.webp&w=256&q=75" />
+                <img src="https://dominos.ua/_next/image/?url=https%3A%2F%2Fmedia-v3.dominos.ua%2FProducts%2Fchesnochnyi.webp&w=256&q=75" />
+                <img src="https://dominos.ua/_next/image/?url=https%3A%2F%2Fmedia-v3.dominos.ua%2FProducts%2Falfredo.webp&w=256&q=75" />
+                <img src="https://dominos.ua/_next/image/?url=https%3A%2F%2Fmedia-v3.dominos.ua%2FProducts%2Fsous-bbk.webp&w=256&q=75" />
+              </S.Option> */}
               <S.NoAdd>
                 <h4>Не додавати:</h4>
                 <input
@@ -146,6 +143,18 @@ const FullPizza = () => {
                   <img onClick={onClickClear} src={Close} alt="close" />
                 )}
               </S.NoAdd>
+              <S.Delivery>
+                <div>
+                  <img src={DeliveryIcon} alt="delivery" />
+                </div>
+                Безкоштовна доставка при замовленні від 750 грн
+              </S.Delivery>
+              <S.Discount>
+                <div>
+                  <CiDiscount1 size="32px" />
+                </div>
+                Знижка 10% при отриманні замовлення в закладі
+              </S.Discount>
             </div>
           )}
         </S.Content>

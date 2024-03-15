@@ -136,6 +136,30 @@ export const NoAdd = styled.div`
   }
 `;
 
+export const Option = styled.div``;
+
+export const Delivery = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  & div {
+    width: 60px;
+    text-align: center;
+    margin-right: 15px;
+  }
+`;
+export const Discount = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+
+  & div {
+    width: 60px;
+    text-align: center;
+    margin-right: 15px;
+  }
+`;
+
 // ======REVIEWS=======
 
 export const RevRoot = styled.div`
@@ -185,12 +209,11 @@ export const Item = styled.li`
 `;
 export const NoMessage = styled.li`
   width: 100%;
-  text-align: center;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 30px;
 `;
 
 export const Top = styled.div`
