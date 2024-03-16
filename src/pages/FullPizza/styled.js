@@ -36,8 +36,8 @@ export const Content = styled.div`
   padding: 20px;
   display: flex;
   flex-direction: column;
-  background-color: rgba(182, 182, 182, 0.2);
-  border-radius: 0 10px 10px 0;
+  background-color: #ecf0f1;
+  border-radius: 10px;
 `;
 
 export const Reviews = styled.div`
@@ -91,34 +91,38 @@ export const Size = styled.div`
 export const Descr = styled.div`
   width: 50%;
   padding-top: 20px;
+
   & h3 {
-    font-size: 24px;
+    font-size: 36px;
   }
 
   & p {
+    font-size: 16px;
     padding-top: 10px;
   }
 `;
 
 export const NoAdd = styled.div`
-  width: 40%;
-  padding-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  margin-top: 40px;
   & h4 {
     font-size: 16px;
-    padding-bottom: 10px;
   }
 
   & input {
     position: relative;
-    width: 100%;
+    width: 70%;
     height: 2rem;
     border: 1px solid ${(props) => props.theme.colors.secondary};
     border-radius: 5px;
     outline: none;
-    margin-top: auto;
     padding: 0 10px;
     &:focus {
       box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+      -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
     }
   }
 
@@ -136,27 +140,31 @@ export const NoAdd = styled.div`
   }
 `;
 
-export const Option = styled.div``;
+export const Bonus = styled.div`
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin-top: 40px;
+  font-size: 16px;
+  gap: 20px;
+`;
 
 export const Delivery = styled.div`
-  display: flex;
-  align-items: center;
-  margin-top: 20px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+
   & div {
-    width: 60px;
-    text-align: center;
-    margin-right: 15px;
+    & img {
+      width: 100px;
+    }
   }
 `;
 export const Discount = styled.div`
-  display: flex;
-  align-items: center;
-  margin-top: 20px;
-
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
   & div {
-    width: 60px;
-    text-align: center;
-    margin-right: 15px;
   }
 `;
 

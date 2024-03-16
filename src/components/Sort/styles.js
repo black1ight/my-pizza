@@ -55,6 +55,7 @@ export const SortPopup = styled.ul`
   padding: 10px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  z-index: 100;
 `;
 
 export const PopupItem = styled.li`

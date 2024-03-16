@@ -5,7 +5,7 @@ import { setActiveItem } from "../../redux/slices/pizzaSlise";
 import { useDispatch, useSelector } from "react-redux";
 import * as S from "./styled";
 import Close from "../../assets/img/close.svg";
-import DeliveryIcon from "../../assets/img/delivery-icon.png";
+import DeliveryIcon from "../../assets/img/food-delivery.png";
 
 import PizzaBlock from "../../components/Pizzas/PizzaBlock";
 import ReviewsBlock from "./Reviews";
@@ -143,18 +143,20 @@ const FullPizza = () => {
                   <img onClick={onClickClear} src={Close} alt="close" />
                 )}
               </S.NoAdd>
-              <S.Delivery>
-                <div>
-                  <img src={DeliveryIcon} alt="delivery" />
-                </div>
-                Безкоштовна доставка при замовленні від 750 грн
-              </S.Delivery>
-              <S.Discount>
-                <div>
-                  <CiDiscount1 size="32px" />
-                </div>
-                Знижка 10% при отриманні замовлення в закладі
-              </S.Discount>
+              <S.Bonus>
+                <S.Delivery>
+                  <div>
+                    <img src={DeliveryIcon} alt="delivery" />
+                  </div>
+                  Безкоштовна доставка при замовленні від 750 грн
+                </S.Delivery>
+                <S.Discount>
+                  <div>
+                    <CiDiscount1 size="100px" />
+                  </div>
+                  Знижка 10% при отриманні замовлення в закладі
+                </S.Discount>
+              </S.Bonus>
             </div>
           )}
         </S.Content>

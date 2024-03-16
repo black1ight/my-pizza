@@ -70,7 +70,7 @@ const PizzaBlock = ({
 
   return (
     <S.Root categoryindex={category} page={page}>
-      <Link to={`pizza/${id}`}>
+      <Link to={page !== "fullPizza" && `pizza/${id}`}>
         <S.Top>
           <S.Image page={page}>
             <img

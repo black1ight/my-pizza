@@ -4,9 +4,13 @@ export const Root = styled.div`
   position: ${(props) => props.position};
   top: 0;
   width: 100%;
-  max-width: 1170px;
+  ${(props) =>
+    props.position === "fixed" ? "max-width: 1200px" : "max-width: 1170px"};
+  ${(props) => props.position === "fixed" && "transform: translateX(-15px)"};
+  ${(props) => props.position === "fixed" && "padding: 0 15px"};
   background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   /* box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.5); */
   z-index: 100;
 `;
