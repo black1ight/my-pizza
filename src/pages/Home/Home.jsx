@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../../components/Header/Header";
 import Categories from "../../components/Categories/Categories";
 import PizzaBlock from "../../components/Pizzas/PizzaBlock";
@@ -25,6 +25,14 @@ const ContentItems = styled.div`
 
 const Home = () => {
   const { items, status } = useSelector((state) => state.pizza);
+  const [scroll, setScroll] = useState(0);
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+  const handleScroll = () => {
+    setScroll(window.scrollY);
+  };
 
   const dispatch = useDispatch();
 
@@ -54,7 +62,7 @@ const Home = () => {
 
   return (
     <Root>
-      <Header />
+      <Header scroll={scroll} />
       <Categories />
       <Sort />
       <ContentItems>

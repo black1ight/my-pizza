@@ -11,15 +11,17 @@ import {
 } from "../../redux/slices/pizzaSlise";
 import { useAuth } from "../../hooks/use-auth";
 import { removeUser } from "../../redux/slices/userSlice";
+import { useRef } from "react";
 
-const Header = () => {
+const Header = ({ scroll }) => {
   const { pathname } = useLocation();
   const { items, totalPrice } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const { isAuth, email } = useAuth();
+  const headerRef = useRef();
 
   return (
-    <div>
+    <S.Root ref={headerRef} position={scroll >= 45 ? "fixed" : "static"}>
       <S.Container>
         <Link to="/">
           <S.Logo src={Logo} alt="logo" />
@@ -51,16 +53,18 @@ const Header = () => {
             </svg>
             {items.length > 0 && (
               <S.Count>
-                {items.reduce((sum, obj) => {
-                  return obj.count + sum;
-                }, 0)}
+                <span>
+                  {items.reduce((sum, obj) => {
+                    return obj.count + sum;
+                  }, 0)}
+                </span>
               </S.Count>
             )}
             <S.TotalPrice>{totalPrice} ₴</S.TotalPrice>
           </S.CartBtn>
         </Link>
       </S.Container>
-    </div>
+    </S.Root>
   );
 };
 

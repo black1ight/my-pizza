@@ -14,13 +14,14 @@ const Container = styled.div`
   background-color: #fff;
   border-radius: 10px;
   width: 1200px;
-  padding: 30px;
+  padding: 15px;
   /* height: 90vh; */
   margin: 0 auto;
 `;
 
 function App() {
   const { openAuthPopup, openPageLock } = useSelector((state) => state.pizza);
+
   return (
     <ThemeProvider theme={theme}>
       {openPageLock && openAuthPopup && <Auth />}

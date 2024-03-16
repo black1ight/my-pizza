@@ -1,11 +1,22 @@
 import styled from "styled-components";
 
+export const Root = styled.div`
+  position: ${(props) => props.position};
+  top: 0;
+  width: 100%;
+  max-width: 1170px;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  /* box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.5); */
+  z-index: 200;
+`;
+
 export const Container = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40px;
+  height: 60px;
   gap: 30px;
 `;
 
@@ -26,7 +37,8 @@ export const AuthBtn = styled.div`
 
 export const CartBtn = styled.div`
   position: absolute;
-  top: 0;
+  top: 50%;
+  transform: translateY(-50%);
   right: 0;
   display: flex;
   justify-content: space-between;
@@ -52,12 +64,22 @@ export const CartBtn = styled.div`
 `;
 export const Count = styled.span`
   color: #fff;
-  text-align: center;
+  /* text-align: center; */
   position: absolute;
-  padding: 2px 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 22px;
+  height: 22px;
+  /* padding: 2px 8px; */
   border-radius: 50%;
+  border: 2px solid #fff;
   top: -8px;
   right: -8px;
   background-color: ${(props) => props.theme.colors.btn};
+  & span {
+    font-size: 12px;
+    line-height: 1;
+  }
 `;
 export const TotalPrice = styled.span``;
