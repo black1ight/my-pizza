@@ -8,7 +8,7 @@ export const Root = styled.div`
   background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(10px);
   /* box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.5); */
-  z-index: 200;
+  z-index: 100;
 `;
 
 export const Container = styled.div`
