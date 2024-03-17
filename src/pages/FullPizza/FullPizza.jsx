@@ -12,6 +12,7 @@ import ReviewsBlock from "./Reviews";
 import { FaStar } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa6";
 import { CiDiscount1 } from "react-icons/ci";
+import { SlPresent } from "react-icons/sl";
 import Header from "../../components/Header/Header";
 
 const weight = [300, 400, 700];
@@ -66,7 +67,12 @@ const FullPizza = () => {
         <S.Content>
           <S.Rating>
             <S.Reviews onClick={() => setOpenReviews(!openReviews)}>
-              <span>Відгуки: ({pizza.reviews.length})</span>
+              <button>
+                Відгуки{" "}
+                {pizza.reviews.length > 0 && (
+                  <span>{pizza.reviews.length}</span>
+                )}
+              </button>
             </S.Reviews>
             <S.Stars>
               <span>
@@ -109,7 +115,7 @@ const FullPizza = () => {
           {openReviews ? (
             <ReviewsBlock {...pizza} />
           ) : (
-            <div>
+            <S.WrapperInfo>
               {" "}
               <S.BlockInfo>
                 <S.Descr>
@@ -152,12 +158,18 @@ const FullPizza = () => {
                 </S.Delivery>
                 <S.Discount>
                   <div>
-                    <CiDiscount1 size="100px" />
+                    <CiDiscount1 size="60px" />
                   </div>
                   Знижка 10% при отриманні замовлення в закладі
                 </S.Discount>
+                <S.Present>
+                  <div>
+                    <SlPresent size="60px" />
+                  </div>
+                  Додаткові знижки до Дня Народження при відвідуванні закладу.
+                </S.Present>
               </S.Bonus>
-            </div>
+            </S.WrapperInfo>
           )}
         </S.Content>
       </S.Root>

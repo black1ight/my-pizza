@@ -1,4 +1,10 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const headerFixed = keyframes`
+  0% { transform: translate(-15px,-200%);}
+  
+  100% { transform: translate(-15px,0%);}
+`;
 
 export const Root = styled.div`
   position: ${(props) => props.position};
@@ -11,8 +17,9 @@ export const Root = styled.div`
   background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  /* box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.5); */
   z-index: 100;
+
+  animation: ${(props) => props.position === "fixed" && headerFixed} 1s ease-in;
 `;
 
 export const Container = styled.div`
@@ -28,8 +35,9 @@ export const Logo = styled.img`
   display: block;
   position: absolute;
   left: 0;
-  top: 0;
-  width: 140px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100px;
 `;
 
 export const AuthBtn = styled.div`
@@ -68,14 +76,12 @@ export const CartBtn = styled.div`
 `;
 export const Count = styled.span`
   color: #fff;
-  /* text-align: center; */
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 22px;
   height: 22px;
-  /* padding: 2px 8px; */
   border-radius: 50%;
   border: 2px solid #fff;
   top: -8px;

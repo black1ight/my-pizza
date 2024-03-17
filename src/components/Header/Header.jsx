@@ -3,7 +3,7 @@ import * as S from "./styles";
 import Search from "../Search/Search";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import Logo from "./../../assets/img/logo.png";
+import Logo from "./../../assets/img/logo-svg.svg";
 import { TbLogin2, TbLogout2 } from "react-icons/tb";
 import {
   setOpenAuthPopup,

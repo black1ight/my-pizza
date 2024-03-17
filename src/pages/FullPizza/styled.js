@@ -14,7 +14,7 @@ export const Root = styled.div`
   background-color: #fff;
   gap: 20px;
 
-  margin-top: 100px;
+  margin-top: 50px;
   border-radius: 10px;
   z-index: 100;
 `;
@@ -36,8 +36,15 @@ export const Content = styled.div`
   padding: 20px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   background-color: #ecf0f1;
   border-radius: 10px;
+`;
+
+export const Rating = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
 `;
 
 export const Reviews = styled.div`
@@ -45,18 +52,48 @@ export const Reviews = styled.div`
   cursor: pointer;
   user-select: none;
   display: flex;
+
+  & button {
+    color: #fff;
+    background-color: ${(props) => props.theme.colors.primary};
+    border-radius: 5px;
+    padding: 5px 20px;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    & span {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 2px solid #ecf0f1;
+      top: -8px;
+      right: -8px;
+      background-color: ${(props) => props.theme.colors.btn};
+      font-size: 12px;
+      line-height: 1;
+    }
+  }
 `;
 
-export const Rating = styled.div`
-  position: relative;
-  display: flex;
-`;
 export const Stars = styled.div`
   margin-left: 10px;
   display: flex;
 
   & svg {
   }
+`;
+
+export const WrapperInfo = styled.div`
+  flex-grow: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 export const BlockInfo = styled.div`
@@ -150,17 +187,29 @@ export const Bonus = styled.div`
 `;
 
 export const Delivery = styled.div`
+  width: 33%;
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
 
   & div {
     & img {
-      width: 100px;
+      width: 60px;
     }
   }
 `;
 export const Discount = styled.div`
+  width: 33%;
+
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  & div {
+  }
+`;
+export const Present = styled.div`
+  width: 33%;
+
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
