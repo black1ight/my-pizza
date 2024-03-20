@@ -17,6 +17,14 @@ export const Root = styled.div`
   margin-top: 50px;
   border-radius: 10px;
   z-index: 100;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    align-items: center;
+  }
+  @media (max-width: 480px) {
+    margin-top: 20px;
+  }
 `;
 
 export const Close = styled.div`
@@ -25,10 +33,27 @@ export const Close = styled.div`
   top: 0;
   z-index: 100;
   cursor: pointer;
+
+  @media (max-width: 640px) {
+    right: 0;
+    top: -30px;
+  }
 `;
 
 export const Card = styled.div`
   width: 30%;
+
+  @media (max-width: 992px) {
+    width: 40%;
+  }
+  @media (max-width: 768px) {
+    width: 50%;
+  }
+
+  @media (max-width: 640px) {
+    width: 100%;
+    max-width: 400px;
+  }
 `;
 
 export const Content = styled.div`
@@ -39,6 +64,20 @@ export const Content = styled.div`
   justify-content: space-between;
   background-color: #ecf0f1;
   border-radius: 10px;
+
+  @media (max-width: 992px) {
+    width: 60%;
+  }
+
+  @media (max-width: 768px) {
+    width: 50%;
+  }
+
+  @media (max-width: 640px) {
+    width: 100%;
+    order: -1;
+    padding: 10px;
+  }
 `;
 
 export const Rating = styled.div`
@@ -55,9 +94,14 @@ export const Reviews = styled.div`
 
   & button {
     color: #fff;
+    font-size: 14px;
     background-color: ${(props) => props.theme.colors.primary};
     border-radius: 5px;
     padding: 5px 20px;
+
+    @media (max-width: 640px) {
+      padding: 8px 20px;
+    }
 
     &:hover {
       cursor: pointer;
@@ -101,11 +145,23 @@ export const BlockInfo = styled.div`
   justify-content: space-between;
   align-items: end;
   gap: 20px;
+
+  @media (max-width: 992px) {
+    flex-direction: column;
+    gap: 10px;
+    align-items: start;
+  }
 `;
 
 export const Size = styled.div`
   width: 50%;
   padding-top: 20px;
+
+  @media (max-width: 992px) {
+    width: 100%;
+    max-width: 300px;
+    padding-top: 10px;
+  }
   & ul {
     position: relative;
     display: flex;
@@ -118,7 +174,7 @@ export const Size = styled.div`
       bottom: 3px;
       left: 50%;
       transform: translateX(-50%);
-      width: 11rem;
+      width: 50%;
       height: 1px;
       background-color: ${(props) => props.theme.colors.secondary};
     }
@@ -128,6 +184,10 @@ export const Size = styled.div`
 export const Descr = styled.div`
   width: 50%;
   padding-top: 20px;
+
+  @media (max-width: 992px) {
+    width: 100%;
+  }
 
   & h3 {
     font-size: 36px;
@@ -145,6 +205,18 @@ export const NoAdd = styled.div`
   align-items: center;
   width: 50%;
   margin-top: 40px;
+
+  @media (max-width: 1280px) {
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+  }
+
+  @media (max-width: 992px) {
+    width: 100%;
+    margin-top: 20px;
+  }
+
   & h4 {
     font-size: 16px;
   }
@@ -153,6 +225,7 @@ export const NoAdd = styled.div`
     position: relative;
     width: 70%;
     height: 2rem;
+    font-size: 14px;
     border: 1px solid ${(props) => props.theme.colors.secondary};
     border-radius: 5px;
     outline: none;
@@ -160,6 +233,12 @@ export const NoAdd = styled.div`
     &:focus {
       box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
       -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+    }
+    @media (max-width: 992px) {
+      width: 100%;
+    }
+    @media (max-width: 480px) {
+      font-size: 16px;
     }
   }
 
@@ -184,17 +263,54 @@ export const Bonus = styled.div`
   margin-top: 40px;
   font-size: 16px;
   gap: 20px;
+
+  @media (max-width: 992px) {
+    flex-wrap: wrap;
+    justify-content: start;
+    font-size: 12px;
+    margin-top: 20px;
+  }
 `;
 
 export const Delivery = styled.div`
   width: 33%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
 
+  @media (max-width: 992px) {
+    padding: 10px;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+  }
+
   & div {
+    flex-grow: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: 768px) {
+      height: 60px;
+    }
     & img {
       width: 60px;
+
+      @media (max-width: 992px) {
+        width: 40px;
+      }
     }
   }
 `;
@@ -204,7 +320,26 @@ export const Discount = styled.div`
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
+
+  @media (max-width: 992px) {
+    padding: 10px;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+  }
   & div {
+    & svg {
+      @media (max-width: 992px) {
+        width: 40px;
+      }
+    }
   }
 `;
 export const Present = styled.div`
@@ -213,7 +348,26 @@ export const Present = styled.div`
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
+
+  @media (max-width: 992px) {
+    padding: 10px;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+  }
   & div {
+    & svg {
+      @media (max-width: 992px) {
+        width: 40px;
+      }
+    }
   }
 `;
 
@@ -234,6 +388,10 @@ export const RevRoot = styled.div`
     margin: 0 10px 5px 0;
   }
   & p {
+  }
+
+  @media (max-width: 640px) {
+    height: 400px;
   }
 `;
 
@@ -263,6 +421,10 @@ export const Item = styled.li`
   &:last-child {
     margin-bottom: 0;
   }
+
+  @media (max-width: 640px) {
+    font-size: 14px;
+  }
 `;
 export const NoMessage = styled.li`
   width: 100%;
@@ -283,6 +445,10 @@ export const Top = styled.div`
   & span {
     margin-left: auto;
     font-size: 10px;
+
+    @media (max-width: 640px) {
+      font-size: 12px;
+    }
   }
 `;
 
@@ -290,7 +456,6 @@ export const Form = styled.div`
   position: fixed;
   left: calc(50% - 250px);
   top: 30%;
-  /* transform: translate(-50%, -50%); */
   display: flex;
   flex-direction: column;
   width: 500px;
@@ -299,6 +464,11 @@ export const Form = styled.div`
   border-radius: 5px;
   z-index: 200;
   animation: ${open} 0.2s ease-in;
+
+  @media (max-width: 640px) {
+    width: 90%;
+    left: 5%;
+  }
 
   & input {
     border: none;
@@ -309,6 +479,12 @@ export const Form = styled.div`
     border: 1px solid ${(props) => props.theme.colors.secondary};
     &::placeholder {
       font-size: 12px;
+    }
+    @media (max-width: 640px) {
+      font-size: 16px;
+      &::placeholder {
+        font-size: 16px;
+      }
     }
   }
 
@@ -323,6 +499,12 @@ export const Form = styled.div`
     &::placeholder {
       font-size: 12px;
     }
+    @media (max-width: 640px) {
+      font-size: 16px;
+      &::placeholder {
+        font-size: 16px;
+      }
+    }
   }
 `;
 export const Button = styled.button`
@@ -336,12 +518,19 @@ export const Button = styled.button`
   &:hover {
     box-shadow: 2px 4px 28px rgba(0, 0, 0, 0.5);
   }
+
+  @media (max-width: 640px) {
+    font-size: 16px;
+  }
 `;
 
 export const Bottom = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
+  @media (max-width: 640px) {
+    padding: 5px 0;
+  }
 `;
 export const Title = styled.span``;
 export const RevStars = styled.div`
@@ -351,5 +540,10 @@ export const RevStars = styled.div`
   justify-content: space-between;
   & span {
     cursor: pointer;
+    & svg {
+      @media (max-width: 640px) {
+        width: 24px;
+      }
+    }
   }
 `;

@@ -14,6 +14,11 @@ import Form from "./Form";
 
 const Auth = () => {
   const [signUp, setSignUp] = useState(false);
+  const [error, setError] = useState("");
+
+  if (error) {
+    setTimeout(() => setError(""), 1500);
+  }
 
   const dispatch = useDispatch();
   const { isAuth } = useAuth();
@@ -34,7 +39,7 @@ const Auth = () => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert(errorCode);
+        setError("Невірний логін або пароль");
       });
   };
 
@@ -51,8 +56,7 @@ const Auth = () => {
         <IoIosCloseCircleOutline size="24px" color="#fff" />
       </S.Close>
       <S.Title>Log In</S.Title>
-
-      <Form handleLogin={handleLogin} setSignUp={setSignUp} />
+      <Form handleLogin={handleLogin} setSignUp={setSignUp} error={error} />
     </S.Root>
   );
 };

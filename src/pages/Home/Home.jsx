@@ -10,9 +10,7 @@ import { fetchPizzas } from "../../redux/slices/pizzaSlise";
 
 const sortList = ["title", "price", "rating"];
 
-const Root = styled.div`
-  position: relative;
-`;
+const Root = styled.div``;
 
 const ContentItems = styled.div`
   display: grid;
@@ -21,6 +19,15 @@ const ContentItems = styled.div`
   grid-column-gap: 20px;
   grid-row-gap: 0px;
   overflow: hidden;
+  @media (max-width: 1280px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: 840px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 540px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 const Home = () => {

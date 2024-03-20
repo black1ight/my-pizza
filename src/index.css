@@ -17,9 +17,35 @@ body {
   overflow-x: hidden;
 }
 
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  select:focus,
+  textarea:focus,
+  input:focus {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 992px) {
+  body {
+    padding: 15px;
+  }
+}
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+}
+@media (max-width: 540px) {
+  body {
+    padding: 0;
+    background-color: #fff;
+  }
+}
+
 a {
   text-decoration: none;
   color: inherit;
+  -webkit-color: inherit;
 }
 
 li {

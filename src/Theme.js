@@ -5,6 +5,7 @@ export const theme = {
     secondary: "rgba(182, 182, 182, 1)",
     secOpacity: "rgba(182, 182, 182, 0.3)",
     btn: "rgb(254, 0, 33)",
+    btnOpacity: "rgba(254, 0, 33, 0.5)",
     hover: {
       filter: "brightness(1.2)",
     },

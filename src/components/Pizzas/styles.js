@@ -55,12 +55,15 @@ export const Image = styled.div`
     width: 100%;
     object-fit: cover;
   }
+  @media (max-width: 540px) {
+    max-width: 70%;
+    margin: 0 auto;
+  }
 `;
 
 export const Title = styled.h4`
   display: ${(props) => (props.page === "fullPizza" ? "none" : "block")};
   font-size: 24px;
-  /* margin: 10px 0 0 0; */
   text-align: center;
 `;
 

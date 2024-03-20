@@ -13,10 +13,18 @@ import Auth from "./components/Auth/Auth";
 const Container = styled.div`
   background-color: #fff;
   border-radius: 10px;
-  width: 1200px;
+  width: 100%;
+  max-width: 1200px;
   padding: 15px;
   /* height: 90vh; */
   margin: 0 auto;
+
+  @media (max-width: 540px) {
+    border-radius: 0;
+  }
+  @media (max-width: 480px) {
+    padding: 10px;
+  }
 `;
 
 function App() {

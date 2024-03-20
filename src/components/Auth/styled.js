@@ -8,6 +8,16 @@ const open = keyframes`
   opacity: 1 }
 `;
 
+const error = keyframes`
+  
+  0% { opacity: 0 }
+
+  50% { opacity: 1 }
+
+  100% { opacity: 0 }
+  
+`;
+
 export const Root = styled.div`
   position: fixed;
   top: calc(50% - (150px));
@@ -32,6 +42,22 @@ export const Close = styled.div`
   right: -30px;
   top: 0;
 `;
+
+export const FormRoot = styled.div`
+  position: relative;
+`;
+
+export const Error = styled.span`
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  top: 0;
+  color: ${(props) => props.theme.colors.btn};
+  text-shadow: 0 2px 10px ${(props) => props.theme.colors.btnOpacity};
+
+  animation: ${error} 1s ease-in-out infinite;
+`;
+
 export const Form = styled.div`
   width: 100%;
   padding: 20px;

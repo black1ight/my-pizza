@@ -40,7 +40,7 @@ const Header = ({ scroll }) => {
             }
           }}
         >
-          <span>{isAuth && email}</span>
+          <S.Email>{isAuth && email}</S.Email>
           {isAuth ? <TbLogout2 size="24px" /> : <TbLogin2 size="24px" />}
         </S.AuthBtn>
         <Link to="/cart">

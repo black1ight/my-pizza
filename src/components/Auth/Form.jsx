@@ -7,7 +7,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth } from "../../hooks/use-auth";
 
-const Form = ({ handleLogin, setSignUp }) => {
+const Form = ({ handleLogin, setSignUp, error }) => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const dispatch = useDispatch();
@@ -18,7 +18,9 @@ const Form = ({ handleLogin, setSignUp }) => {
     dispatch(setOpenPageLock(false));
   }
   return (
-    <div>
+    <S.FormRoot>
+      <S.Error>{error ? error : ""}</S.Error>
+
       <S.Form>
         <input
           onChange={(e) => setEmail(e.target.value)}
@@ -37,7 +39,7 @@ const Form = ({ handleLogin, setSignUp }) => {
           <button onClick={() => setSignUp(true)}>Реєстрація</button>
         </S.Btn>
       </S.Form>
-    </div>
+    </S.FormRoot>
   );
 };
 

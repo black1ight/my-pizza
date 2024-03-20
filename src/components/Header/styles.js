@@ -16,28 +16,53 @@ export const Root = styled.div`
   ${(props) => props.position === "fixed" && "padding: 0 15px"};
   background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(20px);
   z-index: 100;
 
   animation: ${(props) => props.position === "fixed" && headerFixed} 1s ease-in;
+
+  @media (max-width: 1280px) {
+    max-width: calc(100% - 60px);
+  }
+  @media (max-width: 992px) {
+    max-width: calc(100% - 30px);
+  }
+  @media (max-width: 768px) {
+    max-width: calc(100% - 20px);
+  }
+  @media (max-width: 540px) {
+    max-width: none;
+    left: 0;
+    right: 0;
+    transform: none;
+  }
 `;
 
 export const Container = styled.div`
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  height: 60px;
   gap: 30px;
+
+  @media (max-width: 992px) {
+    gap: 20px;
+  }
+  @media (max-width: 768px) {
+    gap: 10px;
+  }
+  @media (max-width: 480px) {
+    flex-wrap: wrap;
+    padding: 10px 0;
+  }
 `;
 
 export const Logo = styled.img`
   display: block;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
   width: 100px;
+  @media (max-width: 480px) {
+    width: 80px;
+  }
 `;
 
 export const AuthBtn = styled.div`
@@ -45,13 +70,27 @@ export const AuthBtn = styled.div`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  & svg {
+    flex-shrink: 0;
+  }
+  @media (max-width: 992px) {
+    max-width: 15%;
+  }
+  @media (max-width: 480px) {
+    flex-wrap: wrap;
+    max-width: 30%;
+  }
+`;
+
+export const Email = styled.span`
+  display: block;
+  @media (max-width: 992px) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 `;
 
 export const CartBtn = styled.div`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -73,6 +112,10 @@ export const CartBtn = styled.div`
   &:hover {
     cursor: pointer;
   }
+
+  @media (max-width: 480px) {
+    padding: 5px 10px;
+  }
 `;
 export const Count = styled.span`
   color: #fff;
@@ -90,6 +133,10 @@ export const Count = styled.span`
   & span {
     font-size: 12px;
     line-height: 1;
+  }
+  @media (max-width: 480px) {
+    top: 0;
+    right: -8px;
   }
 `;
 export const TotalPrice = styled.span``;

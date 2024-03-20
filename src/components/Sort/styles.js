@@ -18,6 +18,10 @@ export const SortRoot = styled.div`
     text-decoration: underline;
     cursor: pointer;
   }
+
+  @media (max-width: 540px) {
+    margin: 10px 0;
+  }
 `;
 
 export const ArrowBox = styled.div`

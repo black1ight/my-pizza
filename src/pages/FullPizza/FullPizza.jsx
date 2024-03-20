@@ -131,12 +131,6 @@ const FullPizza = () => {
                   ))}
                 </S.Size>
               </S.BlockInfo>
-              {/* <S.Option>
-                <img src="https://dominos.ua/_next/image/?url=https%3A%2F%2Fmedia-v3.dominos.ua%2FProducts%2Fsous-domynos.webp&w=256&q=75" />
-                <img src="https://dominos.ua/_next/image/?url=https%3A%2F%2Fmedia-v3.dominos.ua%2FProducts%2Fchesnochnyi.webp&w=256&q=75" />
-                <img src="https://dominos.ua/_next/image/?url=https%3A%2F%2Fmedia-v3.dominos.ua%2FProducts%2Falfredo.webp&w=256&q=75" />
-                <img src="https://dominos.ua/_next/image/?url=https%3A%2F%2Fmedia-v3.dominos.ua%2FProducts%2Fsous-bbk.webp&w=256&q=75" />
-              </S.Option> */}
               <S.NoAdd>
                 <h4>Не додавати:</h4>
                 <input

@@ -2,21 +2,27 @@ import styled from "styled-components";
 
 export const Root = styled.div`
   margin: 20px 0;
+  @media (max-width: 540px) {
+    margin: 10px 0;
+  }
 `;
-
-// export const Root = styled.div`
-//   position: absolute;
-//   top: 140px;
-//   left: 0;
-// `;
 
 export const List = styled.ul`
   list-style: none;
   display: flex;
   justify-content: center;
-  /* flex-direction: column; */
   text-align: center;
   gap: 10px;
+
+  @media (max-width: 768px) {
+    max-width: 90%;
+    overflow-x: scroll;
+    margin: 0 auto;
+    padding: 10px 0;
+  }
+  @media (max-width: 540px) {
+    justify-content: start;
+  }
 `;
 
 export const ListItem = styled.li`
@@ -36,5 +42,8 @@ export const ListItem = styled.li`
     cursor: pointer;
     background-color: ${(props) => props.theme.colors.primary};
     color: #fff;
+  }
+  @media (max-width: 768px) {
+    padding: 5px 10px;
   }
 `;

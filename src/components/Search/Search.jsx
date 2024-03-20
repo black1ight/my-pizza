@@ -7,6 +7,11 @@ import React, { useRef, useCallback, useState } from "react";
 
 const Root = styled.div`
   position: relative;
+
+  @media (max-width: 480px) {
+    order: 4;
+    width: 100%;
+  }
 `;
 
 const Input = styled.input`
@@ -24,6 +29,15 @@ const Input = styled.input`
     color: ${(props) => props.theme.colors.primary};
     border-color: ${(props) => props.theme.colors.primary};
     outline: none;
+  }
+
+  @media (max-width: 992px) {
+    max-width: 150px;
+  }
+
+  @media (max-width: 480px) {
+    max-width: unset;
+    width: 100%;
   }
 `;
 

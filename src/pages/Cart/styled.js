@@ -55,6 +55,7 @@ export const Body = styled.div`
   margin: 50px 0;
 `;
 export const Item = styled.div`
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -63,6 +64,7 @@ export const Item = styled.div`
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 10px;
+  gap: 20px;
   & img {
     max-width: 100px;
   }
@@ -73,11 +75,22 @@ export const Item = styled.div`
   &:hover {
     box-shadow: 0px 0px 20px 1px rgba(223, 230, 233, 1);
   }
+
+  @media (max-width: 680px) {
+    flex-wrap: wrap;
+    padding: 10px;
+    gap: 10px;
+  }
 `;
 
 export const Descr = styled.div`
   width: 100%;
-  max-width: 200px;
+  max-width: 150px;
+
+  @media (max-width: 440px) {
+    width: 50%;
+    max-width: none;
+  }
 
   & h4 {
     font-size: 18px;
@@ -89,15 +102,42 @@ export const Descr = styled.div`
 
 export const NoAdd = styled.span`
   text-decoration: line-through;
+  width: 100%;
+  max-width: 100px;
+  @media (max-width: 440px) {
+    width: 100%;
+    max-width: none;
+    text-align: end;
+  }
 `;
 
 export const Count = styled.div`
+  flex-grow: 2;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 30px;
+  @media (max-width: 440px) {
+    flex-grow: 1;
+    width: 100%;
+    justify-content: space-between;
+  }
+`;
+
+export const CountWripper = styled.div`
+  line-height: 1.5;
+  border: 1px solid ${(props) => props.theme.colors.secOpacity};
+  padding: 0 10px;
+  border-radius: 10px;
   & svg {
     transform: scale(1.2);
   }
   & span {
     font-size: 18px;
     margin: 0 10px;
+  }
+  &:hover {
+    border-color: ${(props) => props.theme.colors.secondary};
   }
 `;
 
@@ -117,6 +157,10 @@ export const Price = styled.div`
   font-weight: 500;
 `;
 export const Close = styled.div`
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
   & svg {
     transform: rotate(-45deg) scale(1.5);
   }
@@ -162,9 +206,16 @@ export const Buttons = styled.div`
   & div {
     width: 50%;
   }
+  @media (max-width: 440px) {
+    flex-direction: column;
+    & div {
+      width: 100%;
+    }
+  }
 `;
 
 export const BtnBack = styled.button`
+  color: ${(props) => props.theme.colors.primary};
   width: 100%;
   ${(props) => props.theme.btn};
   padding-top: 10px;
@@ -189,6 +240,11 @@ export const BtnPay = styled.button`
   &:hover {
     ${(props) => props.theme.colors.hover};
   }
+
+  @media (max-width: 440px) {
+    order: -1;
+    width: 100%;
+  }
 `;
 
 export const EmptyRoot = styled.div`
@@ -200,6 +256,9 @@ export const EmptyRoot = styled.div`
   align-items: center;
   & img {
     width: 300px;
+    @media (max-width: 480px) {
+      width: 200px;
+    }
   }
   & button {
     ${(props) => props.theme.btn}

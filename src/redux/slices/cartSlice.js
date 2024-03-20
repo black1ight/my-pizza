@@ -16,7 +16,8 @@ export const cartSlice = createSlice({
           obj.id === action.payload.id &&
           obj.type === action.payload.type &&
           obj.size === action.payload.size &&
-          obj.board === action.payload.board
+          obj.board === action.payload.board &&
+          obj.noAdd === action.payload.noAdd
       );
 
       if (findItem) {
