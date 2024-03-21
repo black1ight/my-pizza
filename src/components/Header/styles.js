@@ -5,6 +5,11 @@ const headerFixed = keyframes`
   
   100% { transform: translate(-15px,0%);}
 `;
+const headerFixedSmall = keyframes`
+  0% { transform: translateY(-200%);}
+  
+  100% { transform: translateY(0%);}
+`;
 
 export const Root = styled.div`
   position: ${(props) => props.position};
@@ -14,6 +19,8 @@ export const Root = styled.div`
     props.position === "fixed" ? "max-width: 1200px" : "max-width: 1170px"};
   ${(props) => props.position === "fixed" && "transform: translateX(-15px)"};
   ${(props) => props.position === "fixed" && "padding: 0 15px"};
+  ${(props) =>
+    props.position === "fixed" && "box-shadow: 0 0 10px rgba(0, 0, 0, 0.5)"};
   background-color: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(20px);
@@ -35,6 +42,8 @@ export const Root = styled.div`
     left: 0;
     right: 0;
     transform: none;
+    animation: ${(props) => props.position === "fixed" && headerFixedSmall} 1s
+      ease-in;
   }
 `;
 
@@ -59,9 +68,9 @@ export const Container = styled.div`
 
 export const Logo = styled.img`
   display: block;
-  width: 100px;
+  width: 80px;
   @media (max-width: 480px) {
-    width: 80px;
+    width: 60px;
   }
 `;
 

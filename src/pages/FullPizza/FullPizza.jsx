@@ -17,7 +17,7 @@ import Header from "../../components/Header/Header";
 
 const weight = [300, 400, 700];
 
-const FullPizza = () => {
+const FullPizza = ({ scroll }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [inputValue, setInputValue] = useState("");
@@ -59,7 +59,7 @@ const FullPizza = () => {
   }
   return (
     <div>
-      <Header />
+      <Header scroll={scroll} />
       <S.Root>
         <S.Card>
           <PizzaBlock noadd={inputValue} {...pizza} page="fullPizza" />

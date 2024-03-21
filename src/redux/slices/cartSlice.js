@@ -37,7 +37,8 @@ export const cartSlice = createSlice({
           obj.id === action.payload.id &&
           obj.type === action.payload.type &&
           obj.size === action.payload.size &&
-          obj.board === action.payload.board
+          obj.board === action.payload.board &&
+          obj.noAdd === action.payload.noAdd
       );
       if (findItem && findItem.count > 1) {
         findItem.count--;
@@ -49,7 +50,9 @@ export const cartSlice = createSlice({
         (obj) =>
           obj.id === action.payload.id &&
           obj.type === action.payload.type &&
-          obj.size === action.payload.size
+          obj.size === action.payload.size &&
+          obj.board === action.payload.board &&
+          obj.noAdd === action.payload.noAdd
       );
 
       state.items.forEach((obj, index) => {

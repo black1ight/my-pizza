@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
@@ -30,14 +30,23 @@ const Container = styled.div`
 function App() {
   const { openAuthPopup, openPageLock } = useSelector((state) => state.pizza);
 
+  const [scroll, setScroll] = useState(0);
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+  const handleScroll = () => {
+    setScroll(window.scrollY);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       {openPageLock && openAuthPopup && <Auth />}
       {openPageLock && <PageLock />}
       <Container>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/pizza/:id" element={<FullPizza />} />
+          <Route path="/" element={<Home scroll={scroll} />} />
+          <Route path="/pizza/:id" element={<FullPizza scroll={scroll} />} />
           <Route path="/cart" element={<Cart />} />
         </Routes>
       </Container>

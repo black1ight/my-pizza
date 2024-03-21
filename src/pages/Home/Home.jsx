@@ -30,16 +30,8 @@ const ContentItems = styled.div`
   }
 `;
 
-const Home = () => {
+const Home = ({ scroll }) => {
   const { items, status } = useSelector((state) => state.pizza);
-  const [scroll, setScroll] = useState(0);
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-  const handleScroll = () => {
-    setScroll(window.scrollY);
-  };
 
   const dispatch = useDispatch();
 

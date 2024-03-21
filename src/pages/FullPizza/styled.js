@@ -270,6 +270,10 @@ export const Bonus = styled.div`
     font-size: 12px;
     margin-top: 20px;
   }
+
+  @media (max-width: 640px) {
+    display: none;
+  }
 `;
 
 export const Delivery = styled.div`

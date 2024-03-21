@@ -17,15 +17,15 @@ const CartItem = ({
   const dispatch = useDispatch();
 
   const onClickMinus = () => {
-    dispatch(minusItem({ id, type, size, board }));
+    dispatch(minusItem({ id, type, size, board, noAdd }));
   };
 
   const onClickPlus = () => {
-    dispatch(addItem({ id, type, size, board }));
+    dispatch(addItem({ id, type, size, board, noAdd }));
   };
   const onClickRemove = () => {
     if (window.confirm("Видалити товар?")) {
-      dispatch(removeItem({ id, type, size }));
+      dispatch(removeItem({ id, type, size, board, noAdd }));
     }
   };
 
