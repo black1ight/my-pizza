@@ -262,6 +262,8 @@ export const EmptyRoot = styled.div`
   }
   & button {
     ${(props) => props.theme.btn}
+    color: ${(props) => props.theme.colors.primary};
+
     &:hover {
       background-color: ${(props) => props.theme.colors.primary};
       color: #fff;

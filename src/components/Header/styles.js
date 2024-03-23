@@ -53,6 +53,7 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 30px;
+  padding: 5px 0;
 
   @media (max-width: 992px) {
     gap: 20px;
@@ -67,8 +68,20 @@ export const Container = styled.div`
 `;
 
 export const Logo = styled.img`
+  position: relative;
   display: block;
   width: 80px;
+
+  &::after {
+    position: absolute;
+    content: "";
+    width: 100px;
+    height: 5px;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 1);
+  }
+
   @media (max-width: 480px) {
     width: 60px;
   }

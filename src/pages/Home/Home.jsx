@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Header from "../../components/Header/Header";
 import Categories from "../../components/Categories/Categories";
 import PizzaBlock from "../../components/Pizzas/PizzaBlock";

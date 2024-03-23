@@ -28,6 +28,7 @@ export const cartSlice = createSlice({
           count: 1,
         });
       }
+
       state.totalPrice = calcTotalPrice(state.items);
     },
 
@@ -43,6 +44,7 @@ export const cartSlice = createSlice({
       if (findItem && findItem.count > 1) {
         findItem.count--;
       }
+
       state.totalPrice = calcTotalPrice(state.items);
     },
     removeItem(state, action) {
@@ -60,11 +62,13 @@ export const cartSlice = createSlice({
           state.items.splice(index, 1);
         }
       });
+
       state.totalPrice = calcTotalPrice(state.items);
     },
     clearItems(state) {
       state.items = [];
       state.totalPrice = 0;
+      localStorage.clear("cartItems");
     },
   },
 });
