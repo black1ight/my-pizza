@@ -28,7 +28,8 @@ export const Root = styled.div`
   align-items: center;
   width: 100%;
   max-width: 300px;
-  height: 300px;
+  height: 100%;
+  max-height: 350px;
   border-radius: 10px;
   border: 1px solid #fff;
   background: rgb(255, 255, 255);

@@ -11,6 +11,7 @@ import * as S from "./styled";
 import SignUp from "./SignUp";
 import { useAuth } from "../../hooks/use-auth";
 import Form from "./Form";
+import GoogleAuth from "./GoogleAuth";
 
 const Auth = () => {
   const [signUp, setSignUp] = useState(false);
@@ -39,6 +40,7 @@ const Auth = () => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        console(errorCode, errorMessage);
         setError("Невірний логін або пароль");
       });
   };
@@ -57,6 +59,7 @@ const Auth = () => {
       </S.Close>
       <S.Title>Log In</S.Title>
       <Form handleLogin={handleLogin} setSignUp={setSignUp} error={error} />
+      <GoogleAuth />
     </S.Root>
   );
 };
