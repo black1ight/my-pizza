@@ -19,13 +19,9 @@ const Header = ({ scroll }) => {
   const dispatch = useDispatch();
   const { isAuth, email } = useAuth();
   const headerRef = useRef();
-  console.log(headerRef);
 
   return (
-    <S.Root
-      ref={headerRef}
-      position={scroll >= headerRef.current.clientHeight ? "fixed" : "static"}
-    >
+    <S.Root ref={headerRef} position={scroll >= 66 ? "fixed" : "static"}>
       <S.Container>
         <Link to="/">
           <S.Logo src={Logo} alt="logo" />

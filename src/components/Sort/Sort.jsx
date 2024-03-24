@@ -33,7 +33,6 @@ const Sort = () => {
       document.body.removeEventListener("click", handleClickOutside);
     };
   }, []);
-  console.log(openPopup);
   return (
     <S.SortRoot ref={sortRef}>
       <p>Сортувати за:</p>
