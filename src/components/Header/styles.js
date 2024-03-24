@@ -149,7 +149,7 @@ export const Count = styled.span`
   height: 22px;
   border-radius: 50%;
   border: 2px solid #fff;
-  top: -8px;
+  top: 0;
   right: -8px;
   background-color: ${(props) => props.theme.colors.btn};
   & span {
@@ -157,7 +157,6 @@ export const Count = styled.span`
     line-height: 1;
   }
   @media (max-width: 480px) {
-    top: 0;
     right: -8px;
   }
 `;
